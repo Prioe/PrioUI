@@ -2,7 +2,6 @@ local E, L, V, P, G = unpack(ElvUI);
 local MS = E:NewModule('Maelstrom', 'AceEvent-3.0');
 local LSM = LibStub("LibSharedMedia-3.0");
 local EP = LibStub("LibElvUIPlugin-1.0")
---local addon = ...
 
 local MS_WIDTH = 208
 local MS_HEIGHT = 19
@@ -15,8 +14,6 @@ function MS:CreateFrames()
 	local anchor = CreateFrame("Frame", "MaelstromAnchor", E.UIParent)
 	anchor:Point("CENTER", E.UIParent, "CENTER", 0, -386);
 	anchor:SetFrameStrata("LOW")
-	--anchor:ClearAllPoints()
-	--anchor:SetPoint("CENTER", UIParent,0,-386)
 	anchor:SetHeight(MS_HEIGHT)
 	anchor:SetWidth(MS_WIDTH)
 	
@@ -34,7 +31,6 @@ function MS:CreateFrames()
 		self.msframe[i].tex:SetHeight(MS_HEIGHT-2)
 		self.msframe[i].tex:SetWidth((MS_WIDTH/5)-2)
 		self.msframe[i].tex:SetTexture(unpack(MS_COLORS))
-		--self.msframe[i]:Hide()
 	end
 
 	self.msframe[3]:SetPoint("CENTER", anchor, "CENTER", 0, 0)
@@ -46,7 +42,7 @@ function MS:CreateFrames()
 end
 
 local function switchStateFrame(frame, state)
-	--frame.tex:SetTexture(state and RAID_CLASS_COLORS["SHAMAN"].r or 0, state and RAID_CLASS_COLORS["SHAMAN"].g or 0.4, state and RAID_CLASS_COLORS["SHAMAN"].b or 0.59, 1)
+
 	if state then
 		frame.tex:SetTexture(unpack(E:GetColorTable(RAID_CLASS_COLORS["SHAMAN"])))
 	else
@@ -75,14 +71,11 @@ function MS:UNIT_AURA()
 
 		if SpellActivationOverlayFrame:IsShown() then
 			SpellActivationOverlayFrame:Hide()
-			--print("hide")
 		end
 	end
 	if (stacks == 5) and not SpellActivationOverlayFrame:IsShown() then
 		SpellActivationOverlayFrame:Show()
-		--print("show")
 	end
-
 
 end
 
