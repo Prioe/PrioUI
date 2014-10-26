@@ -43,7 +43,6 @@ end
 
 function BL:Initialize()
 	self:SecureHook(B, 'OpenBags', 'CreateItemLevels')
-	self:SecureHook(BL, 'UpdateBagSlots', 'Test')
 end	
 
 hooksecurefunc(B, "UpdateBagSlots", BL.UpdateBagSlots)
