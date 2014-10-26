@@ -458,6 +458,7 @@ function PrioUI:SetupElvUI()
 	E.db.tooltip.spellid = true
 	
 	--Resource
+	E.db.unitframe.units.player.power.detachedWidth = 220
 	if PrioUI:IsResourceClass() == 1 then
 		E.db.movers.PlayerPowerBarMover = "BOTTOMElvUIParentBOTTOM0144"
 		E.db.unitframe.units.player.power.attachTextToPower = true
