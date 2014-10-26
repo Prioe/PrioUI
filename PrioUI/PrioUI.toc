@@ -10,4 +10,3 @@ PrioUI.lua
 media\load_media.xml
 addons\load_addons.xml
 modules\load_modules.xml
-

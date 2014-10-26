@@ -4,29 +4,6 @@ local EP = LibStub("LibElvUIPlugin-1.0");
 local addon = ...
 PrioUI.version = GetAddOnMetadata(addon, "Version")
 
-function PrioUI:GetOptions()
-
-	E.Options.args.prioui = {
-		order = 9000,
-		type = "group",
-		name = "|cffFF6600PrioUI|r",
-		childGroups = "tree",
-		args = {
-			header = {
-				order = 1,
-				type = "header",
-				name = "|cffFF6600PrioUI|r"..format(": |cff99ff33%s|r", PrioUI.version),
-			},
-			install = {
-				order = 10,
-				type = "execute",
-				name = "Install",
-				func = function() PrioUI:Install(); E:ToggleConfig() end,
-			},
-		}
-	}
-end
-
 function PrioUI:Initialize()
 
 	if not E.private.install_complete then 

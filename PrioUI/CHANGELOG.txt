@@ -1,7 +1,0 @@
-alpha 1.1:
-	- initial version
-alpha 1.21:
-	- 6.0.2 update
-	- Installer rework
-alpha 1.22:
-	- changed some paths
