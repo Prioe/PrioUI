@@ -1,6 +1,6 @@
 local E, L, V, P, G = unpack(ElvUI);
 local B = E:GetModule('Bags')
-local BL = E:NewModule('BagsItemLevel', 'AceHook-3.0')
+local BL = E:NewModule('BagItemLevel', 'AceHook-3.0')
 
 function BL:UpdateSlots(bagID, slotID)
 	local f = B:GetContainerFrame()
