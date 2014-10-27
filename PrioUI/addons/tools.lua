@@ -23,7 +23,7 @@ local Author = {
 
 		-- Prio
 		["Prio"] = "AUTH",
-		["Priowl"] = "AUTH",
+		--["Priowl"] = "AUTH",
 
 		--Lunatic
 		["Khosumet"] = "CONT",

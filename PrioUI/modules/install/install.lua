@@ -153,7 +153,6 @@ local function SetupCVars()
 end
 
 local function DPSLayout()
-
 	PrioUI:SetupElvUI()
 	PrioUI:SetupStuff()
 	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
@@ -165,7 +164,17 @@ local function DPSLayout()
 end
 
 local function HealerLayout()
+	PrioUI:SetupElvUI()
+	PrioUI:OverwritePrioUIPay()
+	PrioUI:SetupStuff()
+	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
+	if xCT_Plus then PrioUI:SetupxCT(); end
+	if _G["Skada"] then PrioUI:SetupSkada(); end
+	if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
+	E:UpdateAll(true)	
+end
 
+local function PayLayout()
 	PrioUI:SetupElvUI()
 	PrioUI:OverwritePrioUIHeal()
 	PrioUI:SetupStuff()

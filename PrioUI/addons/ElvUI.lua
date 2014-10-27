@@ -1,16 +1,6 @@
 local E, L, V, P, G = unpack(ElvUI);
 local PrioUI = E:GetModule('PrioUI');
 
---[[
-	--enable toppanel
-	--enable minimap dt buttons
-	--xprep horizontal height width 10 500
-	--mover: left/right chatpanel
-	-change left/right chatpanel height
-	-mover: raidframe
-	tweak raidframe
-]]
-
 function PrioUI:SetupElvUI()
 
 	local classSpec = E.myclass..GetSpecialization()
@@ -53,7 +43,6 @@ function PrioUI:SetupElvUI()
 
 
 	E.db.movers = nil
-
 	E.db.movers = {
 				["ElvUF_FocusCastbarMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450352",
 				["BottomBG_Mover"] = "BOTTOMElvUIParentBOTTOM07",
@@ -171,35 +160,6 @@ function PrioUI:SetupElvUI()
 	E.db.unitframe.units.raid.debuffs.perrow = 4
 	E.db.unitframe.units.raid.debuffs.sizeOverride = 15
 	E.db.unitframe.units.raid.debuffs.enable = true
-						
-
-	--[[
-	-- Raid 10
-	E.db.unitframe.units.raid10.debuffs.achorPoint = "TOPRIGHT"
-	E.db.unitframe.units.raid10.debuffs.sizeOverride = 16
-	E.db.unitframe.units.raid10.debuffs.useWhitelist = true
-	E.db.unitframe.units.raid10.debuffs.enable = true
-	E.db.unitframe.units.raid10.debuffs.perrow = 4
-	E.db.unitframe.units.raid10.health.text_format = ""
-	E.db.unitframe.units.raid10.height = 45
-	E.db.unitframe.units.raid10.healPrediction = true
-	E.db.unitframe.units.raid10.numGroups = 5
-	E.db.unitframe.units.raid10.growthDirection = "RIGHT_UP"
-	
-	-- Raid 25
-	E.db.unitframe.units.raid25.debuffs.yOffset = 26
-	E.db.unitframe.units.raid25.debuffs.anchorPoint = "BOTTOMLEFT"
-	E.db.unitframe.units.raid25.debuffs.xOffset = 3
-	E.db.unitframe.units.raid25.debuffs.sizeOverride = 16
-	E.db.unitframe.units.raid25.debuffs.useWhitelist = true
-	E.db.unitframe.units.raid25.debuffs.enable = true
-	E.db.unitframe.units.raid25.debuffs.perrow = 4
-	E.db.unitframe.units.raid25.health.text_format = ""
-	E.db.unitframe.units.raid25.height = 45
-	E.db.unitframe.units.raid25.healPrediction = true
-	E.db.unitframe.units.raid25.numGroups = 5
-	E.db.unitframe.units.raid25.growthDirection = "RIGHT_UP"
-	]]--
 
 	-- Raid 40
 	E.db.unitframe.units.raid40.roleIcon.enable = true
@@ -394,18 +354,6 @@ function PrioUI:SetupElvUI()
 	E.db.actionbar.microbar.buttonsPerRow = 6
 	E.db.actionbar.microbar.mouseover = true
 	
-	-- SLE
-	--[[E.db.sle.characterframeoptions.itemdurability.show = false
-	E.db.sle.characterframeoptions.showimage = false
-	E.db.sle.characterframeoptions.itemenchant.show = false
-	E.db.sle.characterframeoptions.itemenchant.fontSize = 12
-	E.db.sle.characterframeoptions.itemenchant.font = "ElvUI Font"
-	E.db.sle.characterframeoptions.itemlevel.font = "ElvUI Font"
-	E.db.sle.characterframeoptions.itemlevel.fontSize = 12
-	E.db.sle.characterframeoptions.itemgem.socketSize = 14
-	E.db.sle.characterframeoptions.showerrorgradient = false
-	E.db.sle.characterframeoptions.shownormalgradient = false]]--
-	
 	E.db.sle.backgrounds.bottom.height = 162
 	E.db.sle.backgrounds.bottom.width = 600
 	E.db.sle.backgrounds.bottom.template = "Transparent"
@@ -433,11 +381,7 @@ function PrioUI:SetupElvUI()
 	E.db.sle.datatext.dp4.enabled = true
 	
 	E.db.sle.exprep.replong = true
-	--[[E.db.sle.flares.showinside = true
-	E.db.sle.flares.backdrop = false
-	E.db.sle.marks.showinside = true
-	E.db.sle.marks.enabled = true]]--
-	
+
 	E.db.sle.minimap.enable = true
 	--E.db.sle.minimap.buttons.anchor = "VERTICAL"
 	--E.db.sle.minimap.buttons.mouseover = true
@@ -497,44 +441,74 @@ function PrioUI:SetupElvUI()
 	if PrioUI:IsAuthor() == "AUTH" then 
 		E.db.actionbar.bar4.paging[E.myclass] = "[mod:shift] 7;[mod:alt] 8;"
 	end
-
-	if PrioUI:IsAuthor() == "CONT" then 
-		
-		--[[
-unit frames: aura bars austellen --  buffs/debuffs einstellen
-neues chat (whsiper) fenster erstellen
-		]]
-	
-
-	end
 	
 end
 
 function PrioUI:OverwritePrioUIHeal()
 
-	--classbar/totembar mover, 2x2
-	--buff icons
-	--aurabars
-	--
-
-	--E.db.movers.ElvUF_Raid10Mover = "BOTTOMElvUIParentBOTTOM0117" --
-	E.db.movers.ElvUF_RaidMover = "BOTTOMElvUIParentBOTTOM0117"--
-	E.db.movers.ElvUF_PlayerMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT454153"--
-	E.db.movers.ElvUF_AssistMover = "TOPLEFTElvUIParentTOPLEFT0-338"--
-	E.db.movers.ElvUF_PlayerCastbarMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT454116" -- 
-	--E.db.movers.ElvUF_FocusMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450385"
-	--E.db.movers.ClassBarMover = "BOTTOMElvUIParentBOTTOM0144"
-	E.db.movers.ElvUF_TargetMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-454153"--
-	E.db.movers.ElvUF_Raid40Mover = "BOTTOMElvUIParentBOTTOM0117"--
-	--E.db.movers.ElvUF_FocusCastbarMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450352"
-	--E.db.movers.TotemBarMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT493107"
-	E.db.movers.ElvUF_TargetCastbarMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-454116"--
-	E.db.movers.ElvUF_TargetTargetMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-45476"--
-	--E.db.movers.ElvUF_PetMover = "BOTTOMElvUIParentBOTTOM-25077"
-	E.db.movers.ElvUF_PartyMover = "BOTTOMElvUIParentBOTTOM0112"--
+	E.db.movers.ElvUF_RaidMover = "BOTTOMElvUIParentBOTTOM0117"
+	E.db.movers.ElvUF_PlayerMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT454153"
+	E.db.movers.ElvUF_AssistMover = "TOPLEFTElvUIParentTOPLEFT0-338"
+	E.db.movers.ElvUF_PlayerCastbarMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT454116"
+	E.db.movers.ElvUF_TargetMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-454153"
+	E.db.movers.ElvUF_Raid40Mover = "BOTTOMElvUIParentBOTTOM0117"
+	E.db.movers.ElvUF_TargetCastbarMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-454116"
+	E.db.movers.ElvUF_TargetTargetMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-45476"
+	E.db.movers.ElvUF_PartyMover = "BOTTOMElvUIParentBOTTOM0112"
 
 end
 
+function PrioUI:OverwritePrioUIPay()
+	--[[
+	movers:
+		target
+		player
+		raid
+		ab1
+		ab2
+		ab3
+		ab4
+		boss button
+		player castbar
+		target castbar
+		party frame
+		raid40
+	raid:
+		height, width
+		heal prediction,
+		name text offset x,y
+		health orientation, frequent updates
+		healtz text
+		role symbol position
+	player:
+		buffs, debuffs disabled
+		height, width
+		castbar width?
+	target: 
+		buffs, debuffs anchor
+		aurabars disabled
+		height width
+		castbar width?
+		castbar orientation
+		castbar icon position
+	actionbars:
+		number of buttons: 1,2,3
+		buttons per row: 1,2,3
+	party:
+		height
+	raid40:
+		height
+		num groups
+		sort
+	targettarget:
+		disable
+	xct:
+		healing damage, position
+		healing name removed
+		DAMAGE INCOME SCROLL REMOVE
+	]]
+	
+end
 	
 
 PrioUI.Classbar = {
@@ -561,29 +535,24 @@ PrioUI.Classbar = {
 }
 
 function PrioUI:IsResourceClass()
-
 	local class = PrioUI.Classbar[E.myclass]
-   local spec = GetSpecialization()
-   local res
-   
-   --print(class,spec)
-   
-   if class then
-      if type(class) == "table" then
-         for k,v in pairs(class) do
-            --print(k,v)
-            if k == spec then 
-               res = v
-            else res = false end                
-         end
-      else
-         res = class
-      end
-   else
-      res = false
-   end
-   
-   return res
+	local spec = GetSpecialization()
+	local res
 
-
+	if class then
+		if type(class) == "table" then
+			for k,v in pairs(class) do
+				if k == spec then 
+					res = v
+				else
+					res = false 
+				end                
+			end
+		else
+			res = class
+		end
+	else
+		res = false
+	end
+	return res
 end
