@@ -2,11 +2,20 @@ local E, L, V, P, G = unpack(ElvUI);
 local PrioUI = E:GetModule('PrioUI');
 
 function PrioUI:GetOptions()
-	E.Options.args.prioui = {
-		order = 9000,
-		type = "group",
-		name = "|cffFF6600PrioUI|r",
-		childGroups = "tree",
+	if not E.Options.args.prioui then
+		E.Options.args.prioui = {
+			order = -2,
+			type = 'group',
+			name = '|cffFF6600PrioUI|r',
+			args = {},
+		}
+	end
+
+	E.Options.args.prioui.args.installer = {
+		order = 40,
+		type = 'group',
+		name = 'Installer',
+		childGroups = 'tab',
 		args = {
 			header = {
 				order = 1,
@@ -19,6 +28,7 @@ function PrioUI:GetOptions()
 				name = "Install",
 				func = function() PrioUI:Install(); E:ToggleConfig() end,
 			},
-		}
+		},
 	}
+
 end
