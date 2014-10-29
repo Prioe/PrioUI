@@ -556,60 +556,15 @@ function PrioUI:OverwritePrioUIPay()
 	do
 		if not xCT_Plus then return end
 		local x = xCT_Plus
-		
-	end
-	
-	--[[
-	movers:
-		target
-		player
-		raid
-		ab1
-		ab2
-		ab3
-		ab4
-		boss button
-		player castbar
-		target castbar
-		party frame
-		raid40
-	raid:
-		height, width
-		heal prediction,
-		name text offset x,y
-		health orientation, frequent updates
-		--healtz text
-		role symbol position
-	player:
-		buffs, debuffs disabled
-		height, width
-		castbar width?
-	target: 
-		buffs, debuffs anchor
-		aurabars disabled
-		height width
-		castbar width?
-		castbar orientation
-		castbar icon position
-	party:
-		height
-		s
-	raid40:
-		height
-		num groups
-		sort
-	targettarget:
-		disable
-		s
-	actionbars:
-		number of buttons: 1,2,3
-		buttons per row: 1,2,3
-	xct:
-		healing damage, position
-		healing name removed
-		DAMAGE INCOME SCROLL REMOVE
-	]]
-	
+		x.db.profile.healing.enableRealmNames = false
+		x.db.profile.healing.enableClassNames = false
+		x.db.profile.healing.showFriendlyHealers = false
+		x.db.profile.healing.X = -918
+		x.db.profile.healing.Y = 210
+		x.db.profile.damage.Y = 32
+		x.db.profile.damage.X = -918
+		x.cvar_udpate()
+	end	
 end
 	
 

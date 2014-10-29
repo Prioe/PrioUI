@@ -71,7 +71,7 @@ function PrioUI:SetupxCT()
 				["fontOutline"] = "2OUTLINE",
 				["Height"] = 145,
 				["font"] = "ElvUI Font",
-				["enableScrollable"] = true,
+				--["enableScrollable"] = true,
 			}
 		}
 
