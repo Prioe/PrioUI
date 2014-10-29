@@ -165,7 +165,7 @@ end
 
 local function HealerLayout()
 	PrioUI:SetupElvUI()
-	PrioUI:OverwritePrioUIPay()
+	PrioUI:OverwritePrioUIHeal()
 	PrioUI:SetupStuff()
 	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
 	if xCT_Plus then PrioUI:SetupxCT(); end

@@ -44,73 +44,73 @@ function PrioUI:SetupElvUI()
 
 	E.db.movers = nil
 	E.db.movers = {
-				["ElvUF_FocusCastbarMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450352",
-				["BottomBG_Mover"] = "BOTTOMElvUIParentBOTTOM07",
-				["GhostFrameMover"] = "TOPElvUIParentTOP0-224",
-				["BossButton"] = "TOPLEFTElvUIParentTOPLEFT476-508",
-				["FarmToolMover"] = "TOPLEFTElvUIParentTOPLEFT0-433",
-				["ElvUF_RaidpetMover"] = "TOPLEFTElvUIParentTOPLEFT4-409",
-				["MarkMover"] = "TOPLEFTElvUIParentTOPLEFT0-20",
-				["FarmPortalMover"] = "TOPLEFTElvUIParentTOPLEFT0-468",
-				["VehicleSeatMover"] = "TOPLEFTElvUIParentTOPLEFT16-62",
-				["ElvUF_TargetTargetMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-433164",
-				["RightBG_Mover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-395365",
-				["ElvAB_4"] = "BOTTOMElvUIParentBOTTOM3024",
-				["AltPowerBarMover"] = "TOPElvUIParentTOP0-84",
-				["ReputationBarMover"] = "TOPElvUIParentTOP0-27",
-				["BNETMover"] = "TOPRIGHTElvUIParentTOPRIGHT-4-223",
-				["UIBFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-4-200",
-				["RaidUtility_Mover"] = "TOPLEFTElvUIParentTOPLEFT283-20",
-				["ArenaHeaderMover"] = "TOPRIGHTElvUIParentTOPRIGHT-400-283",
-				["ActionBG_Mover"] = "BOTTOMElvUIParentBOTTOM0429",
-				["ElvUF_PlayerMover"] = "BOTTOMElvUIParentBOTTOM-250150",
-				["ElvAB_7"] = "TOPElvUIParentTOP270-421",
-				["RightChatMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-34",
-				["ElvUF_AssistMover"] = "TOPLEFTElvUIParentTOPLEFT0-338",
-				["ElvUF_PlayerCastbarMover"] = "BOTTOMElvUIParentBOTTOM-250112",
-				--["MMButtonsMover"] = "TOPRIGHTElvUIParentTOPRIGHT-1-268",
-				["SquareMinimapBar"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-1268",
-				["LeftChatMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT34",
-				["GMMover"] = "TOPElvUIParentTOP154-127",
-				["BagsMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-3204",
-				["FlareMover"] = "TOPLEFTElvUIParentTOPLEFT155-20",
-				["LeftBG_Mover"] = "TOPLEFTElvUIParentTOPLEFT359-248",
-				["AurasMover"] = "TOPRIGHTElvUIParentTOPRIGHT-187-24",
-				["ElvUF_FocusMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450385",
-				["MicrobarMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT20204",
-				["ExperienceBarMover"] = "TOPElvUIParentTOP0-36",
-				["ElvUF_TargetMover"] = "BOTTOMElvUIParentBOTTOM250150",
-				["DP_2_Mover"] = "TOPLEFTElvUIParentTOPLEFT3830",
-				["ElvUF_Raid40Mover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
-				["ElvUF_RaidMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
-				["ElvAB_1"] = "BOTTOMElvUIParentBOTTOM039",
-				["ElvAB_2"] = "BOTTOMElvUIParentBOTTOM04",
 				--["ElvUF_PetTargetMover"] = "BOTTOMElvUIParentBOTTOM21976",
 				--["ElvUF_TargetTargetTargetMover"] = "TOPElvUIParentTOP229-487",
-				["LootFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-299-239",
-				["PetAB"] = "BOTTOMElvUIParentBOTTOM074",
-				["FarmSeedMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT0198",
-				["ElvAB_3"] = "BOTTOMElvUIParentBOTTOM-3014",
-				["ElvAB_5"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT0343",
-				["ElvUF_PetMover"] = "BOTTOMElvUIParentBOTTOM-25077",
-				["TempEnchantMover"] = "TOPRIGHTElvUIParentTOPRIGHT-107-197",
-				["DP_3_Mover"] = "TOPRIGHTElvUIParentTOPRIGHT-3830",
-				["ElvUF_TankMover"] = "TOPLEFTElvUIParentTOPLEFT0-268",
-				["TotemBarMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT493107",
-				["Dashboard"] = "TOPLEFTElvUIParentTOPLEFT188-69",
-				["ElvUF_TargetCastbarMover"] = "BOTTOMElvUIParentBOTTOM250112",
-				["ElvAB_6"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-34343",
-				["ElvAB_10"] = "TOPRIGHTElvUIParentTOPRIGHT-358-305",
-				["Top_Center_Mover"] = "TOPElvUIParentTOP00",
-				["BossHeaderMover"] = "TOPRIGHTElvUIParentTOPRIGHT-161-343",
-				["WatchFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-71-292",
-				["ElvAB_9"] = "TOPLEFTElvUIParentTOPLEFT509-307",
-				["ElvUF_PartyMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
+				--["MMButtonsMover"] = "TOPRIGHTElvUIParentTOPRIGHT-1-268",
+				["ActionBG_Mover"] = "BOTTOMElvUIParentBOTTOM0429",
 				["AlertFrameMover"] = "TOPElvUIParentTOP0-45",
+				["AltPowerBarMover"] = "TOPElvUIParentTOP0-84",
+				["ArenaHeaderMover"] = "TOPRIGHTElvUIParentTOPRIGHT-400-283",
+				["AurasMover"] = "TOPRIGHTElvUIParentTOPRIGHT-187-24",
+				["BagsMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-3204",
+				["BNETMover"] = "TOPRIGHTElvUIParentTOPRIGHT-4-223",
+				["BossButton"] = "TOPLEFTElvUIParentTOPLEFT476-508",
+				["BossHeaderMover"] = "TOPRIGHTElvUIParentTOPRIGHT-161-343",
+				["BottomBG_Mover"] = "BOTTOMElvUIParentBOTTOM07",
+				["Dashboard"] = "TOPLEFTElvUIParentTOPLEFT188-69",
+				["DP_2_Mover"] = "TOPLEFTElvUIParentTOPLEFT3830",
+				["DP_3_Mover"] = "TOPRIGHTElvUIParentTOPRIGHT-3830",
+				["ElvAB_1"] = "BOTTOMElvUIParentBOTTOM039",
+				["ElvAB_10"] = "TOPRIGHTElvUIParentTOPRIGHT-358-305",
+				["ElvAB_2"] = "BOTTOMElvUIParentBOTTOM04",
+				["ElvAB_3"] = "BOTTOMElvUIParentBOTTOM-3014",
+				["ElvAB_4"] = "BOTTOMElvUIParentBOTTOM3024",
+				["ElvAB_5"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT0343",
+				["ElvAB_6"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-34343",
+				["ElvAB_7"] = "TOPElvUIParentTOP270-421",
 				["ElvAB_8"] = "TOPElvUIParentTOP-117-405",
-				["MinimapMover"] = "TOPRIGHTElvUIParentTOPRIGHT-3-23",
-				["ShiftAB"] = "TOPLEFTElvUIParentTOPLEFT2-23",
+				["ElvAB_9"] = "TOPLEFTElvUIParentTOPLEFT509-307",
+				["ElvUF_AssistMover"] = "TOPLEFTElvUIParentTOPLEFT0-338",
+				["ElvUF_FocusCastbarMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450352",
+				["ElvUF_FocusMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450385",
+				["ElvUF_PartyMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
+				["ElvUF_PetMover"] = "BOTTOMElvUIParentBOTTOM-25077",
+				["ElvUF_PlayerCastbarMover"] = "BOTTOMElvUIParentBOTTOM-250112",
+				["ElvUF_PlayerMover"] = "BOTTOMElvUIParentBOTTOM-250150",
+				["ElvUF_Raid40Mover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
+				["ElvUF_RaidMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
+				["ElvUF_RaidpetMover"] = "TOPLEFTElvUIParentTOPLEFT4-409",
+				["ElvUF_TankMover"] = "TOPLEFTElvUIParentTOPLEFT0-268",
+				["ElvUF_TargetCastbarMover"] = "BOTTOMElvUIParentBOTTOM250112",
+				["ElvUF_TargetMover"] = "BOTTOMElvUIParentBOTTOM250150",
+				["ElvUF_TargetTargetMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-433164",
+				["ExperienceBarMover"] = "TOPElvUIParentTOP0-36",
+				["FarmPortalMover"] = "TOPLEFTElvUIParentTOPLEFT0-468",
+				["FarmSeedMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT0198",
+				["FarmToolMover"] = "TOPLEFTElvUIParentTOPLEFT0-433",
+				["FlareMover"] = "TOPLEFTElvUIParentTOPLEFT155-20",
+				["GhostFrameMover"] = "TOPElvUIParentTOP0-224",
+				["GMMover"] = "TOPElvUIParentTOP154-127",
+				["LeftBG_Mover"] = "TOPLEFTElvUIParentTOPLEFT359-248",
+				["LeftChatMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT34",
+				["LootFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-299-239",
 				["Maelstrom_Mover"] = "BOTTOMElvUIParentBOTTOM0142",
+				["MarkMover"] = "TOPLEFTElvUIParentTOPLEFT0-20",
+				["MicrobarMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT20204",
+				["MinimapMover"] = "TOPRIGHTElvUIParentTOPRIGHT-3-23",
+				["PetAB"] = "BOTTOMElvUIParentBOTTOM074",
+				["RaidUtility_Mover"] = "TOPLEFTElvUIParentTOPLEFT283-20",
+				["ReputationBarMover"] = "TOPElvUIParentTOP0-27",
+				["RightBG_Mover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-395365",
+				["RightChatMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-34",
+				["ShiftAB"] = "TOPLEFTElvUIParentTOPLEFT2-23",
+				["SquareMinimapBar"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-1268",
+				["TempEnchantMover"] = "TOPRIGHTElvUIParentTOPRIGHT-107-197",
+				["Top_Center_Mover"] = "TOPElvUIParentTOP00",
+				["TotemBarMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT493107",
+				["UIBFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-4-200",
+				["VehicleSeatMover"] = "TOPLEFTElvUIParentTOPLEFT16-62",
+				["WatchFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-71-292",
 			}
 
 			
@@ -459,6 +459,106 @@ function PrioUI:OverwritePrioUIHeal()
 end
 
 function PrioUI:OverwritePrioUIPay()
+	
+	--Movers
+	E.db.movers.BossButton = "TOPLEFTElvUIParentTOPLEFT9-240"
+	E.db.movers.ElvAB_1 = "TOPLEFTElvUIParentTOPLEFT225-299"
+	E.db.movers.ElvAB_2 = "TOPLEFTElvUIParentTOPLEFT155-299"
+	E.db.movers.ElvAB_3 = "TOPLEFTElvUIParentTOPLEFT85-299"
+	E.db.movers.ElvAB_4 = "TOPLEFTElvUIParentTOPLEFT85-474"
+	E.db.movers.ElvUF_FocusCastbarMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT194372"
+	E.db.movers.ElvUF_FocusMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT88372"
+	E.db.movers.ElvUF_PartyMover = "TOPLEFTElvUIParentTOPLEFT298-244"
+	E.db.movers.ElvUF_PlayerCastbarMover = "TOPLEFTElvUIParentTOPLEFT88-210"
+	E.db.movers.ElvUF_PlayerMover = "TOPLEFTElvUIParentTOPLEFT88-244"
+	E.db.movers.ElvUF_Raid40Mover = "TOPLEFTElvUIParentTOPLEFT298-244"
+	E.db.movers.ElvUF_RaidMover = "TOPLEFTElvUIParentTOPLEFT298-244"		
+	E.db.movers.ElvUF_TankMover = "TOPLEFTElvUIParentTOPLEFT0-268"
+	E.db.movers.ElvUF_TargetCastbarMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT88445"
+	E.db.movers.ElvUF_TargetMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT88479"			
+	E.db.movers.TotemBarMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT4131"
+	E.db.movers.VehicleSeatMover = "TOPLEFTElvUIParentTOPLEFT16-62"
+
+	--Unit Frames
+	--Raid
+	E.db.unitframe.units.raid.buffIndicator.size = 10
+	E.db.unitframe.units.raid.debuffs.clickThrough = true
+	E.db.unitframe.units.raid.debuffs.enable = true
+	E.db.unitframe.units.raid.debuffs.fontSize = 9
+	E.db.unitframe.units.raid.debuffs.numrows = 2
+	E.db.unitframe.units.raid.debuffs.perrow = 2
+	E.db.unitframe.units.raid.debuffs.sizeOverride = 12
+	E.db.unitframe.units.raid.debuffs.xOffset = -46
+	E.db.unitframe.units.raid.debuffs.yOffset = 10
+	E.db.unitframe.units.raid.growthDirection = "DOWN_RIGHT"
+	E.db.unitframe.units.raid.healPrediction = true
+	E.db.unitframe.units.raid.health.frequentUpdates = true
+	E.db.unitframe.units.raid.health.orientation = "VERTICAL"
+	E.db.unitframe.units.raid.health.position = "BOTTOMRIGHT"
+	E.db.unitframe.units.raid.height = 69
+	E.db.unitframe.units.raid.name.yOffset = 1
+	E.db.unitframe.units.raid.roleIcon.position = "BOTTOMLEFT"
+	E.db.unitframe.units.raid.width = 65
+	
+	--Player
+	E.db.unitframe.units.player.debuffs.enable = false
+	E.db.unitframe.units.player.aurabar.enable = false
+	E.db.unitframe.units.player.castbar.width = 207
+	E.db.unitframe.units.player.castbar.height = 27
+	E.db.unitframe.units.player.width = 207
+	E.db.unitframe.units.player.height = 55
+
+	--Target
+	E.db.unitframe.units.target.aurabar.enable = false
+	E.db.unitframe.units.target.buffs.anchorPoint = "BOTTOMLEFT"
+	E.db.unitframe.units.target.buffs.noConsolidated.friendly = true
+	E.db.unitframe.units.target.buffs.perrow = 4
+	E.db.unitframe.units.target.buffs.sizeOverride = 25
+	E.db.unitframe.units.target.buffs.useBlacklist.friendly = false
+	E.db.unitframe.units.target.buffs.yOffset = -36
+	E.db.unitframe.units.target.castbar.height = 27
+	E.db.unitframe.units.target.castbar.width = 207
+	E.db.unitframe.units.target.debuffs.anchorPoint = "BOTTOMRIGHT"
+	E.db.unitframe.units.target.debuffs.attachTo = "FRAME"		 
+	E.db.unitframe.units.target.debuffs.perrow = 4
+	E.db.unitframe.units.target.debuffs.sizeOverride = 25
+	E.db.unitframe.units.target.debuffs.yOffset = -36
+	E.db.unitframe.units.target.width = 207
+			
+	--Party
+	E.db.unitframe.units.party.height = 69
+
+	--Raid40
+	E.db.unitframe.units.raid40.growthDirection = "UP_RIGHT"
+	E.db.unitframe.units.raid40.groupsPerRowCol = 2
+	E.db.unitframe.units.raid40.height = 33
+
+	--TargetTarget
+	E.db.unitframe.units.targettarget.power.enable = false
+
+	--Focus
+	E.db.unitframe.units.focus.castbar.height = 38
+	E.db.unitframe.units.focus.castbar.icon = false
+	E.db.unitframe.units.focus.castbar.width = 101
+	E.db.unitframe.units.focus.debuffs.enable = false
+	E.db.unitframe.units.focus.height = 42
+	E.db.unitframe.units.focus.width = 103
+
+	--Actionbars				
+	E.db.actionbar.bar1.buttons = 10
+	E.db.actionbar.bar1.buttonsPerRow = 2
+	E.db.actionbar.bar2.buttons = 10
+	E.db.actionbar.bar2.buttonsPerRow = 2
+	E.db.actionbar.bar3.buttons = 10
+	E.db.actionbar.bar3.buttonsPerRow = 2
+
+	--xCT
+	do
+		if not xCT_Plus then return end
+		local x = xCT_Plus
+		
+	end
+	
 	--[[
 	movers:
 		target
@@ -478,7 +578,7 @@ function PrioUI:OverwritePrioUIPay()
 		heal prediction,
 		name text offset x,y
 		health orientation, frequent updates
-		healtz text
+		--healtz text
 		role symbol position
 	player:
 		buffs, debuffs disabled
@@ -491,17 +591,19 @@ function PrioUI:OverwritePrioUIPay()
 		castbar width?
 		castbar orientation
 		castbar icon position
-	actionbars:
-		number of buttons: 1,2,3
-		buttons per row: 1,2,3
 	party:
 		height
+		s
 	raid40:
 		height
 		num groups
 		sort
 	targettarget:
 		disable
+		s
+	actionbars:
+		number of buttons: 1,2,3
+		buttons per row: 1,2,3
 	xct:
 		healing damage, position
 		healing name removed
