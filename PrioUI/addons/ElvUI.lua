@@ -3,7 +3,7 @@ local PrioUI = E:GetModule('PrioUI');
 
 function PrioUI:SetupElvUI()
 
-	local classSpec = E.myclass..GetSpecialization()
+	local classSpec = E.myclass..GetSpecialization() or 0
 
 	E.db.nameplate.fontSize = 11
 	E.db.nameplate.badscale = 1.4
