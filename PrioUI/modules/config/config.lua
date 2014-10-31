@@ -11,16 +11,22 @@ function PrioUI:GetOptions()
 		}
 	end
 
+	E.Options.args.prioui.args.header = {
+		order = 0,
+		type = "header",
+		name = "|cffFF6600PrioUI|r"..format(": |cff99ff33%s|r", PrioUI.version),
+	}
+
 	E.Options.args.prioui.args.installer = {
-		order = 40,
+		order = 1,
 		type = 'group',
 		name = 'Installer',
-		childGroups = 'tab',
+		guiInline = true,
 		args = {
-			header = {
-				order = 1,
-				type = "header",
-				name = "|cffFF6600PrioUI|r"..format(": |cff99ff33%s|r", PrioUI.version),
+			desc = {
+				order = 5,
+				type = 'description',
+				name = L["This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder."],
 			},
 			install = {
 				order = 10,
@@ -28,7 +34,31 @@ function PrioUI:GetOptions()
 				name = "Install",
 				func = function() PrioUI:Install(); E:ToggleConfig() end,
 			},
+			dps = {
+				order = 15,
+				type = "execute",
+				name = "DPS/Tank",
+				func = function() E:StaticPopup_Show("PRIOUI_DPS") end,
+			},
+			healer = {
+				order = 20,
+				type = "execute",
+				name = "Healer",
+				func = function() E:StaticPopup_Show("PRIOUI_HEALER") end,
+			},
+			pay = {
+				order = 25,
+				type = "execute",
+				name = "Healer: Pay",
+				func = function() E:StaticPopup_Show("PRIOUI_PAY") end,
+			},
 		},
+	}
+	E.Options.args.prioui.args.general = {
+		order = 1,
+		type = 'group',
+		name = 'General',
+		args = {},
 	}
 
 end

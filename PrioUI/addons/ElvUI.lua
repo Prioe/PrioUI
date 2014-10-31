@@ -5,6 +5,74 @@ function PrioUI:SetupElvUI()
 
 	local classSpec = E.myclass..GetSpecialization() or 0
 
+	PrioUI.Classbar = {
+		["WARRIOR"] = 1,
+		["HUNTER"] = 1,
+		["ROGUE"] = 1,
+		["DEATHKNIGHT"] = 1,
+		["DRUID"] = {
+			[1] = 2,
+			[2] = 1,
+			[3] = 1	
+		},
+		["MONK"] = {
+			[1] = 1,
+			[3] = 1	
+		},
+		["PALADIN"] = 2,
+		["WARLOCK"] = 2,
+		["PRIEST"] = {
+			[3] = 2,
+		},
+	}
+
+	PrioUI.Classstats = {
+		["DRUID1"] = {"Spell/Heal Power", "Crit Chance", "Haste"},
+		["DRUID2"] = {"Attack Power", "Mastery", "Crit Chance"},
+		["DRUID3"] = {"Armor", "Crit Chance", "Avoidance"},
+		["DRUID4"] = {"Spell/Heal Power", "Haste", "Spirit"},
+	
+		["HUNTER1"] = {"Attack Power", "Crit Chance", "Haste"},	
+		["HUNTER2"] = {"Attack Power", "Crit Chance", "Haste"},
+		["HUNTER3"] = {"Attack Power", "Crit Chance", "Haste"},
+	
+		["MAGE1"] = {"Spell/Heal Power", "Mastery", "Haste"},
+		["MAGE2"] = {"Spell/Heal Power", "Crit Chance", "Haste"},
+		["MAGE3"] = {"Spell/Heal Power", "Haste", "Crit Chance"},
+	
+		["MONK1"] = {"Attack Power", "Mastery", "Crit Chance"},
+		["MONK2"] = {"Spell/Heal Power", "Spirit", "Crit Chance"},	
+		["MONK3"] = {"Attack Power", "Crit Chance", "Haste"},			
+	
+		["PALADIN1"] = {"Spell/Heal Power", "Spirit", "Mastery"},
+		["PALADIN2"] = {"Avoidance", "Mastery", "Haste"},
+		["PALADIN3"] = {"Attack Power", "Haste", "Mastery"},
+	
+		["PRIEST1"] = {"Spell/Heal Power", "Spirit", "Mastery"},
+		["PRIEST2"] = {"Spell/Heal Power", "Spirit", "Crit Chance"},
+		["PRIEST3"] = {"Spell/Heal Power", "Haste", "Crit Chance"},
+	
+		["ROGUE1"] = {"Attack Power", "Mastery", "Haste"},
+		["ROGUE2"] = {"Attack Power", "Haste", "Mastery"},
+		["ROGUE3"] = {"Attack Power", "Haste", "Crit Chance"},
+	
+		["SHAMAN1"] = {"Spell/Heal Power", "Haste", "Mastery"},
+		["SHAMAN2"] = {"Attack Power", "Mastery", "Haste"},
+		["SHAMAN3"] = {"Spell/Heal Power", "Spirit", "Mastery"},
+	
+		["WARLOCK1"] = {"Spell/Heal Power", "Haste", "Mastery"},
+		["WARLOCK2"] = {"Spell/Heal Power", "Haste", "Mastery"},
+		["WARLOCK3"] = {"Spell/Heal Power", "Haste", "Mastery"},
+	
+		["WARRIOR1"] = {"Attack Power", "Crit Chance", "Mastery"},
+		["WARRIOR2"] = {"Attack Power", "Crit Chance", "Mastery"},
+		["WARRIOR3"] = {"Avoidance", "Mastery", "Attack Power"},
+
+		["DEATHKNIGHT1"] = {"Avoidance", "Mastery", "Haste"},
+		["DEATHKNIGHT2"] = {"Attack Power", "Haste", "Crit Chance"},
+		["DEATHKNIGHT3"] = {"Attack Power", "Haste", "Crit Chance"},
+	}
+
 	E.db.nameplate.fontSize = 11
 	E.db.nameplate.badscale = 1.4
 	E.db.nameplate.auraFont = "ElvUI Font"
@@ -22,7 +90,6 @@ function PrioUI:SetupElvUI()
 	E.db.nameplate.healthBar.text.format = "CURRENT_PERCENT"
 
 	E.db.general.totems.size = 33
-	--E.db.general.bordercolor = {b = 0.31, g = 0.31, r = 0.31}
 	E.db.general.minimap.size = 150
 	E.db.general.loginmessage = false
 	E.db.general.bottomPanel = false
@@ -41,77 +108,71 @@ function PrioUI:SetupElvUI()
 	E.db.general.experience.height = 10
 	E.db.general.experience.width = 500
 
-
-	E.db.movers = nil
-	E.db.movers = {
-				--["ElvUF_PetTargetMover"] = "BOTTOMElvUIParentBOTTOM21976",
-				--["ElvUF_TargetTargetTargetMover"] = "TOPElvUIParentTOP229-487",
-				--["MMButtonsMover"] = "TOPRIGHTElvUIParentTOPRIGHT-1-268",
-				["ActionBG_Mover"] = "BOTTOMElvUIParentBOTTOM0429",
-				["AlertFrameMover"] = "TOPElvUIParentTOP0-45",
-				["AltPowerBarMover"] = "TOPElvUIParentTOP0-84",
-				["ArenaHeaderMover"] = "TOPRIGHTElvUIParentTOPRIGHT-400-283",
-				["AurasMover"] = "TOPRIGHTElvUIParentTOPRIGHT-187-24",
-				["BagsMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-3204",
-				["BNETMover"] = "TOPRIGHTElvUIParentTOPRIGHT-4-223",
-				["BossButton"] = "TOPLEFTElvUIParentTOPLEFT476-508",
-				["BossHeaderMover"] = "TOPRIGHTElvUIParentTOPRIGHT-161-343",
-				["BottomBG_Mover"] = "BOTTOMElvUIParentBOTTOM07",
-				["Dashboard"] = "TOPLEFTElvUIParentTOPLEFT188-69",
-				["DP_2_Mover"] = "TOPLEFTElvUIParentTOPLEFT3830",
-				["DP_3_Mover"] = "TOPRIGHTElvUIParentTOPRIGHT-3830",
-				["ElvAB_1"] = "BOTTOMElvUIParentBOTTOM039",
-				["ElvAB_10"] = "TOPRIGHTElvUIParentTOPRIGHT-358-305",
-				["ElvAB_2"] = "BOTTOMElvUIParentBOTTOM04",
-				["ElvAB_3"] = "BOTTOMElvUIParentBOTTOM-3014",
-				["ElvAB_4"] = "BOTTOMElvUIParentBOTTOM3024",
-				["ElvAB_5"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT0343",
-				["ElvAB_6"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-34343",
-				["ElvAB_7"] = "TOPElvUIParentTOP270-421",
-				["ElvAB_8"] = "TOPElvUIParentTOP-117-405",
-				["ElvAB_9"] = "TOPLEFTElvUIParentTOPLEFT509-307",
-				["ElvUF_AssistMover"] = "TOPLEFTElvUIParentTOPLEFT0-338",
-				["ElvUF_FocusCastbarMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450352",
-				["ElvUF_FocusMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450385",
-				["ElvUF_PartyMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
-				["ElvUF_PetMover"] = "BOTTOMElvUIParentBOTTOM-25077",
-				["ElvUF_PlayerCastbarMover"] = "BOTTOMElvUIParentBOTTOM-250112",
-				["ElvUF_PlayerMover"] = "BOTTOMElvUIParentBOTTOM-250150",
-				["ElvUF_Raid40Mover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
-				["ElvUF_RaidMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204",
-				["ElvUF_RaidpetMover"] = "TOPLEFTElvUIParentTOPLEFT4-409",
-				["ElvUF_TankMover"] = "TOPLEFTElvUIParentTOPLEFT0-268",
-				["ElvUF_TargetCastbarMover"] = "BOTTOMElvUIParentBOTTOM250112",
-				["ElvUF_TargetMover"] = "BOTTOMElvUIParentBOTTOM250150",
-				["ElvUF_TargetTargetMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-433164",
-				["ExperienceBarMover"] = "TOPElvUIParentTOP0-36",
-				["FarmPortalMover"] = "TOPLEFTElvUIParentTOPLEFT0-468",
-				["FarmSeedMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT0198",
-				["FarmToolMover"] = "TOPLEFTElvUIParentTOPLEFT0-433",
-				["FlareMover"] = "TOPLEFTElvUIParentTOPLEFT155-20",
-				["GhostFrameMover"] = "TOPElvUIParentTOP0-224",
-				["GMMover"] = "TOPElvUIParentTOP154-127",
-				["LeftBG_Mover"] = "TOPLEFTElvUIParentTOPLEFT359-248",
-				["LeftChatMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT34",
-				["LootFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-299-239",
-				["Maelstrom_Mover"] = "BOTTOMElvUIParentBOTTOM0142",
-				["MarkMover"] = "TOPLEFTElvUIParentTOPLEFT0-20",
-				["MicrobarMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT20204",
-				["MinimapMover"] = "TOPRIGHTElvUIParentTOPRIGHT-3-23",
-				["PetAB"] = "BOTTOMElvUIParentBOTTOM074",
-				["RaidUtility_Mover"] = "TOPLEFTElvUIParentTOPLEFT283-20",
-				["ReputationBarMover"] = "TOPElvUIParentTOP0-27",
-				["RightBG_Mover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-395365",
-				["RightChatMover"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-34",
-				["ShiftAB"] = "TOPLEFTElvUIParentTOPLEFT2-23",
-				["SquareMinimapBar"] = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-1268",
-				["TempEnchantMover"] = "TOPRIGHTElvUIParentTOPRIGHT-107-197",
-				["Top_Center_Mover"] = "TOPElvUIParentTOP00",
-				["TotemBarMover"] = "BOTTOMLEFTElvUIParentBOTTOMLEFT493107",
-				["UIBFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-4-200",
-				["VehicleSeatMover"] = "TOPLEFTElvUIParentTOPLEFT16-62",
-				["WatchFrameMover"] = "TOPRIGHTElvUIParentTOPRIGHT-71-292",
-			}
+	--Movers
+	E.db.movers.ActionBG_Mover = "BOTTOMElvUIParentBOTTOM0429"
+	E.db.movers.AlertFrameMover = "TOPElvUIParentTOP0-45"
+	E.db.movers.AltPowerBarMover = "TOPElvUIParentTOP0-84"
+	E.db.movers.ArenaHeaderMover = "TOPRIGHTElvUIParentTOPRIGHT-400-283"
+	E.db.movers.AurasMover = "TOPRIGHTElvUIParentTOPRIGHT-187-24"
+	E.db.movers.BagsMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-3204"
+	E.db.movers.BNETMover = "TOPRIGHTElvUIParentTOPRIGHT-4-223"
+	E.db.movers.BossButton = "TOPLEFTElvUIParentTOPLEFT476-508"
+	E.db.movers.BossHeaderMover = "TOPRIGHTElvUIParentTOPRIGHT-161-343"
+	E.db.movers.BottomBG_Mover = "BOTTOMElvUIParentBOTTOM07"
+	E.db.movers.Dashboard = "TOPLEFTElvUIParentTOPLEFT188-69"
+	E.db.movers.DP_2_Mover = "TOPLEFTElvUIParentTOPLEFT3830"
+	E.db.movers.DP_3_Mover = "TOPRIGHTElvUIParentTOPRIGHT-3830"
+	E.db.movers.ElvAB_1 = "BOTTOMElvUIParentBOTTOM039"
+	E.db.movers.ElvAB_10 = "TOPRIGHTElvUIParentTOPRIGHT-358-305"
+	E.db.movers.ElvAB_2 = "BOTTOMElvUIParentBOTTOM04"
+	E.db.movers.ElvAB_3 = "BOTTOMElvUIParentBOTTOM-3014"
+	E.db.movers.ElvAB_4 = "BOTTOMElvUIParentBOTTOM3024"
+	E.db.movers.ElvAB_5 = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT0343"
+	E.db.movers.ElvAB_6 = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-34343"
+	E.db.movers.ElvAB_7 = "TOPElvUIParentTOP270-421"
+	E.db.movers.ElvAB_8 = "TOPElvUIParentTOP-117-405"
+	E.db.movers.ElvAB_9 = "TOPLEFTElvUIParentTOPLEFT509-307"
+	E.db.movers.ElvUF_AssistMover = "TOPLEFTElvUIParentTOPLEFT0-338"
+	E.db.movers.ElvUF_FocusCastbarMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450352"
+	E.db.movers.ElvUF_FocusMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-450385"
+	E.db.movers.ElvUF_PartyMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204"
+	E.db.movers.ElvUF_PetMover = "BOTTOMElvUIParentBOTTOM-25077"
+	E.db.movers.ElvUF_PlayerCastbarMover = "BOTTOMElvUIParentBOTTOM-250112"
+	E.db.movers.ElvUF_PlayerMover = "BOTTOMElvUIParentBOTTOM-250150"
+	E.db.movers.ElvUF_Raid40Mover = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204"
+	E.db.movers.ElvUF_RaidMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT3204"
+	E.db.movers.ElvUF_RaidpetMover = "TOPLEFTElvUIParentTOPLEFT4-409"
+	E.db.movers.ElvUF_TankMover = "TOPLEFTElvUIParentTOPLEFT0-268"
+	E.db.movers.ElvUF_TargetCastbarMover = "BOTTOMElvUIParentBOTTOM250112"
+	E.db.movers.ElvUF_TargetMover = "BOTTOMElvUIParentBOTTOM250150"
+	E.db.movers.ElvUF_TargetTargetMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-433164"
+	E.db.movers.ExperienceBarMover = "TOPElvUIParentTOP0-36"
+	E.db.movers.FarmPortalMover = "TOPLEFTElvUIParentTOPLEFT0-468"
+	E.db.movers.FarmSeedMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT0198"
+	E.db.movers.FarmToolMover = "TOPLEFTElvUIParentTOPLEFT0-433"
+	E.db.movers.FlareMover = "TOPLEFTElvUIParentTOPLEFT155-20"
+	E.db.movers.GhostFrameMover = "TOPElvUIParentTOP0-224"
+	E.db.movers.GMMover = "TOPElvUIParentTOP154-127"
+	E.db.movers.LeftBG_Mover = "TOPLEFTElvUIParentTOPLEFT359-248"
+	E.db.movers.LeftChatMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT34"
+	E.db.movers.LootFrameMover = "TOPRIGHTElvUIParentTOPRIGHT-299-239"
+	E.db.movers.Maelstrom_Mover = "BOTTOMElvUIParentBOTTOM0142"
+	E.db.movers.MarkMover = "TOPLEFTElvUIParentTOPLEFT0-20"
+	E.db.movers.MicrobarMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT20204"
+	E.db.movers.MinimapMover = "TOPRIGHTElvUIParentTOPRIGHT-3-23"
+	E.db.movers.PetAB = "BOTTOMElvUIParentBOTTOM074"
+	E.db.movers.RaidUtility_Mover = "TOPLEFTElvUIParentTOPLEFT283-20"
+	E.db.movers.ReputationBarMover = "TOPElvUIParentTOP0-27"
+	E.db.movers.RightBG_Mover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-395365"
+	E.db.movers.RightChatMover = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-34"
+	E.db.movers.ShiftAB = "TOPLEFTElvUIParentTOPLEFT2-23"
+	E.db.movers.SquareMinimapBar = "BOTTOMRIGHTElvUIParentBOTTOMRIGHT-1268"
+	E.db.movers.TempEnchantMover = "TOPRIGHTElvUIParentTOPRIGHT-107-197"
+	E.db.movers.Top_Center_Mover = "TOPElvUIParentTOP00"
+	E.db.movers.TotemBarMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT493107"
+	E.db.movers.UIBFrameMover = "TOPRIGHTElvUIParentTOPRIGHT-4-200"
+	E.db.movers.VehicleSeatMover = "TOPLEFTElvUIParentTOPLEFT16-62"
+	E.db.movers.WatchFrameMover = "TOPRIGHTElvUIParentTOPRIGHT-71-292"
 
 			
 	E.db.bags.currencyFormat = "ICON"
@@ -129,8 +190,6 @@ function PrioUI:SetupElvUI()
 	E.db.unitframe.fontOutline = "OUTLINE"
 	E.db.unitframe.smoothbars = true
 	E.db.unitframe.font = "ElvUI Font"
-	--E.db.unitframe.colors.healthclass = true
-	--E.db.unitframe.colors.health = {r=0.2117647058823529, g=0.2117647058823529, b=0.2117647058823529}
 	E.db.unitframe.units.tank.enable = false
 	E.db.unitframe.units.assist.enable = false
 	
@@ -232,70 +291,21 @@ function PrioUI:SetupElvUI()
 	-- Datatexts
 	E.db.datatexts.font = "ElvUI Font"
 	E.db.datatexts.fontSize = 12
-	E.db.datatexts.time24 = true
-	
+	E.db.datatexts.time24 = true	
 	E.db.datatexts.panels.DP_1.right = "Talent/Loot Specialization"
 	E.db.datatexts.panels.DP_1.left = "System"	
 	E.db.datatexts.panels.DP_4.right = "Time"
 	E.db.datatexts.panels.RightChatDataPanel.left = "Bags"
 	E.db.datatexts.panels.RightChatDataPanel.middle = "Durability"
-
+	E.db.datatexts.panels.LeftChatDataPanel.left = PrioUI.Classstats[classSpec][1]
+	E.db.datatexts.panels.LeftChatDataPanel.middle = PrioUI.Classstats[classSpec][2]
+	E.db.datatexts.panels.LeftChatDataPanel.right = PrioUI.Classstats[classSpec][3]
 	if _G["TimeToDie"] then E.db.datatexts.panels.Top_Center = "TimeToDie" end
 	if _G["WIM"] then E.db.datatexts.panels.DP_1.middle = "WIM" end
 	if _G["BugSack"] then E.db.datatexts.panels.DP_4.left = "BugSack" end
 	if _G["AtlasLoot"] then E.db.datatexts.panels.DP_4.middle = "AtlasLoot" end
 	if _G["SavedInstances"] then E.db.datatexts.panels.DP_3.right = "SavedInstances" end	
-	
-	PrioUI.Classstats = {
-		["DRUID1"] = {"Spell/Heal Power", "Crit Chance", "Haste"},
-		["DRUID2"] = {"Attack Power", "Mastery", "Crit Chance"},
-		["DRUID3"] = {"Armor", "Crit Chance", "Avoidance"},
-		["DRUID4"] = {"Spell/Heal Power", "Haste", "Spirit"},
-	
-		["HUNTER1"] = {"Attack Power", "Crit Chance", "Haste"},	
-		["HUNTER2"] = {"Attack Power", "Crit Chance", "Haste"},
-		["HUNTER3"] = {"Attack Power", "Crit Chance", "Haste"},
-	
-		["MAGE1"] = {"Spell/Heal Power", "Mastery", "Haste"},
-		["MAGE2"] = {"Spell/Heal Power", "Crit Chance", "Haste"},
-		["MAGE3"] = {"Spell/Heal Power", "Haste", "Crit Chance"},
-	
-		["MONK1"] = {"Attack Power", "Mastery", "Crit Chance"},
-		["MONK2"] = {"Spell/Heal Power", "Spirit", "Crit Chance"},	
-		["MONK3"] = {"Attack Power", "Crit Chance", "Haste"},			
-	
-		["PALADIN1"] = {"Spell/Heal Power", "Spirit", "Mastery"},
-		["PALADIN2"] = {"Avoidance", "Mastery", "Haste"},
-		["PALADIN3"] = {"Attack Power", "Haste", "Mastery"},
-	
-		["PRIEST1"] = {"Spell/Heal Power", "Spirit", "Mastery"},
-		["PRIEST2"] = {"Spell/Heal Power", "Spirit", "Crit Chance"},
-		["PRIEST3"] = {"Spell/Heal Power", "Haste", "Crit Chance"},
-	
-		["ROGUE1"] = {"Attack Power", "Mastery", "Haste"},
-		["ROGUE2"] = {"Attack Power", "Haste", "Mastery"},
-		["ROGUE3"] = {"Attack Power", "Haste", "Crit Chance"},
-	
-		["SHAMAN1"] = {"Spell/Heal Power", "Haste", "Mastery"},
-		["SHAMAN2"] = {"Attack Power", "Mastery", "Haste"},
-		["SHAMAN3"] = {"Spell/Heal Power", "Spirit", "Mastery"},
-	
-		["WARLOCK1"] = {"Spell/Heal Power", "Haste", "Mastery"},
-		["WARLOCK2"] = {"Spell/Heal Power", "Haste", "Mastery"},
-		["WARLOCK3"] = {"Spell/Heal Power", "Haste", "Mastery"},
-	
-		["WARRIOR1"] = {"Attack Power", "Crit Chance", "Mastery"},
-		["WARRIOR2"] = {"Attack Power", "Crit Chance", "Mastery"},
-		["WARRIOR3"] = {"Avoidance", "Mastery", "Attack Power"},
 
-		["DEATHKNIGHT1"] = {"Avoidance", "Mastery", "Haste"},
-		["DEATHKNIGHT2"] = {"Attack Power", "Haste", "Crit Chance"},
-		["DEATHKNIGHT3"] = {"Attack Power", "Haste", "Crit Chance"},
-	}
-	
-	E.db.datatexts.panels.LeftChatDataPanel.left = PrioUI.Classstats[classSpec][1]
-	E.db.datatexts.panels.LeftChatDataPanel.middle = PrioUI.Classstats[classSpec][2]
-	E.db.datatexts.panels.LeftChatDataPanel.right = PrioUI.Classstats[classSpec][3]
 
 	-- Actionbars
 	E.db.actionbar.font = "ElvUI Font"
@@ -421,7 +431,6 @@ function PrioUI:SetupElvUI()
 	end
 	
 	-- Private
-
 	E.private.general.dmgfont = "Designer Block"
 	E.private.sle.characterframeoptions.enable = true
 	E.private.sle.minimap.mapicons.enable = true
@@ -524,6 +533,7 @@ function PrioUI:OverwritePrioUIPay()
 	E.db.unitframe.units.target.debuffs.sizeOverride = 25
 	E.db.unitframe.units.target.debuffs.yOffset = -36
 	E.db.unitframe.units.target.width = 207
+	E.db.unitframe.units.target.height = 54
 			
 	--Party
 	E.db.unitframe.units.party.height = 69
@@ -556,40 +566,16 @@ function PrioUI:OverwritePrioUIPay()
 	do
 		if not xCT_Plus then return end
 		local x = xCT_Plus
-		x.db.profile.healing.enableRealmNames = false
-		x.db.profile.healing.enableClassNames = false
-		x.db.profile.healing.showFriendlyHealers = false
-		x.db.profile.healing.X = -918
-		x.db.profile.healing.Y = 210
-		x.db.profile.damage.Y = 32
-		x.db.profile.damage.X = -918
+		x.db.profile.frames.healing.enableRealmNames = false
+		x.db.profile.frames.healing.enableClassNames = false
+		x.db.profile.frames.healing.showFriendlyHealers = false
+		x.db.profile.frames.healing.X = -918
+		x.db.profile.frames.healing.Y = 210
+		x.db.profile.frames.damage.Y = 32
+		x.db.profile.frames.damage.X = -918
 		x.cvar_udpate()
 	end	
 end
-	
-
-PrioUI.Classbar = {
-
-	WARRIOR = 1,
-	HUNTER = 1,
-	ROGUE = 1,
-	DEATHKNIGHT = 1,
-	DRUID = {
-		[1] = 2,
-		[2] = 1,
-		[3] = 1	
-	},
-	MONK = {
-		[1] = 1,
-		[3] = 1	
-	},
-	PALADIN = 2,
-	WARLOCK = 2,
-	PRIEST = {
-		[3] = 2,
-	},
-
-}
 
 function PrioUI:IsResourceClass()
 	local class = PrioUI.Classbar[E.myclass]

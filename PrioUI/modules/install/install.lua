@@ -156,7 +156,7 @@ local function DPSLayout()
 	PrioUI:SetupElvUI()
 	PrioUI:SetupStuff()
 	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-	if xCT_Plus then PrioUI:SetupxCT(); end
+	if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
 	if _G["Skada"] then PrioUI:SetupSkada(); end
 	if _G["ExtraCD"] then PrioUI:SetupExtraCD(); end	
 	if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
@@ -168,7 +168,7 @@ local function HealerLayout()
 	PrioUI:OverwritePrioUIHeal()
 	PrioUI:SetupStuff()
 	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-	if xCT_Plus then PrioUI:SetupxCT(); end
+	if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
 	if _G["Skada"] then PrioUI:SetupSkada(); end
 	if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
 	E:UpdateAll(true)	
@@ -176,11 +176,11 @@ end
 
 local function PayLayout()
 	PrioUI:SetupElvUI()
-	PrioUI:OverwritePrioUIHeal()
 	PrioUI:SetupStuff()
 	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-	if xCT_Plus then PrioUI:SetupxCT(); end
+	if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
 	if _G["Skada"] then PrioUI:SetupSkada(); end
+	PrioUI:OverwritePrioUIPay()
 	if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
 	E:UpdateAll(true)	
 end
@@ -292,7 +292,7 @@ local function SetPage(PageNum)
 	elseif PageNum == 6 then
 		f.SubTitle:SetText(L["Role Setup"])
 		f.Desc1:SetText(L['Choose the layout you wish to use.'])
-		f.Desc2:SetText(L['You can always change fonts and colors of any element of elvui from the in-game configuration.'])
+		f.Desc2:SetText(L['This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder.'])
 		f.Desc3:SetText(L["Importance: |cff07D400High|r"])
 
 		PrioUIInstallOption1Button:Show()
@@ -301,6 +301,9 @@ local function SetPage(PageNum)
 		PrioUIInstallOption2Button:Show()
 		PrioUIInstallOption2Button:SetScript('OnClick', function() HealerLayout() end)
 		PrioUIInstallOption2Button:SetText(L["Healer"])
+		PrioUIInstallOption3Button:Show()
+		PrioUIInstallOption3Button:SetScript('OnClick', function() PayLayout() end)
+		PrioUIInstallOption3Button:SetText(L["Healer: Pay"])
 	elseif PageNum == 7 then 
 		f.SubTitle:SetText(L["Installation Complete"])
 		f.Desc1:SetText(L["You are now finished with the installation process. If you are in need of technical support please visit us at http://www.tukui.org."])
@@ -550,6 +553,15 @@ E.PopupDialogs["PRIOUI_HEALER"] = {
 	button1 = YES,
 	button2 = NO,
 	OnAccept = function() HealerLayout() end,
+	timeout = 0,
+	whileDead = 1,
+	hideOnEscape = false,
+}
+E.PopupDialogs["PRIOUI_PAY"] = {
+	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
+	button1 = YES,
+	button2 = NO,
+	OnAccept = function() PayLayout() end,
 	timeout = 0,
 	whileDead = 1,
 	hideOnEscape = false,
