@@ -258,7 +258,6 @@ function PrioUI:SetupElvUI()
 	E.db.unitframe.units.player.power.yOffset = -25
 	E.db.unitframe.units.player.power.text_format = ""
 	E.db.unitframe.units.player.position = "CENTER"
-	--E.db.unitframe.units.player.classbar
 	E.db.unitframe.units.player.health.xOffset = 8
 	E.db.unitframe.units.player.health.text_format = "[healthcolor][health:current-percent]"
 	
@@ -393,8 +392,6 @@ function PrioUI:SetupElvUI()
 	E.db.sle.exprep.replong = true
 
 	E.db.sle.minimap.enable = true
-	--E.db.sle.minimap.buttons.anchor = "VERTICAL"
-	--E.db.sle.minimap.buttons.mouseover = true
 	E.db.sle.minimap.mapicons.iconsize = 24
 	E.db.sle.minimap.mapicons.iconmouseover = true
 	
