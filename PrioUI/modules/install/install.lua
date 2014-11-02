@@ -2,7 +2,7 @@ local E, L, V, P, G = unpack(ElvUI);
 local PrioUI = E:GetModule('PrioUI');
 
 local CURRENT_PAGE = 0
-local MAX_PAGE = 7
+local MAX_PAGE = 6
 
 V["prioui_install_complete"] = nil
 
@@ -84,7 +84,7 @@ local function SetupChat()
 	ChatFrame_AddMessageGroup(ChatFrame1, "COMBAT_GUILD_XP_GAIN")
 	ChatFrame_AddChannel(ChatFrame1, GENERAL)
 
-	if E.myname == "Prio" then
+	if (E.myname == "Prio") or E.myname == "Andura" then
 		SetCVar("scriptErrors", 1)
 	end	
 
@@ -259,7 +259,7 @@ local function SetPage(PageNum)
 		PrioUIInstallOption1Button:SetScript("OnClick", function() SetupChat() end)
 		PrioUIInstallOption1Button:SetText("PrioUI Chat")
 
-	elseif PageNum == 4 then
+	--[[elseif PageNum == 4 then
 		f.SubTitle:SetText(L["Armory Mode"])
 		f.Desc1:SetText(L["Enable S&L Armory\n(Deatiled Character & Inspect frames)\n|cffFF0000Note:|r This is currently a beta option."])
 		f.Desc2:SetText(L["This will enable S&L Armory mode that will show more detailed information at a quick glance on the toons you inspect as well as your own character."])
@@ -267,8 +267,8 @@ local function SetPage(PageNum)
 		
 		PrioUIInstallOption1Button:Show()
 		PrioUIInstallOption1Button:SetScript('OnClick', function() E.private.sle.characterframeoptions.enable = true; E.private.sle.inspectframeoptions.enable = true; end)
-		PrioUIInstallOption1Button:SetText(L["Enable"])	
-	elseif PageNum == 5 then
+		PrioUIInstallOption1Button:SetText(L["Enable"])	]]
+	elseif PageNum == 4 then
 		f.SubTitle:SetText(L['Theme Setup'])
 		f.Desc1:SetText(L['Choose a theme layout you wish to use for your initial setup.'])
 		f.Desc2:SetText(L['You can always change fonts and colors of any element of elvui from the in-game configuration.'])
@@ -289,7 +289,7 @@ local function SetPage(PageNum)
 		 	E.private.general.pixelPerfect = not E.private.general.pixelPerfect; 
 		 	PrioUIInstallOption4Button:SetText("Pixel Perfect: "..(E.private.general.pixelPerfect and "|cffFF0000no|r" or "|cff07D400yes|r"))
 		 	end)
-	elseif PageNum == 6 then
+	elseif PageNum == 5 then
 		f.SubTitle:SetText(L["Role Setup"])
 		f.Desc1:SetText(L['Choose the layout you wish to use.'])
 		f.Desc2:SetText(L['This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder.'])
@@ -304,7 +304,7 @@ local function SetPage(PageNum)
 		PrioUIInstallOption3Button:Show()
 		PrioUIInstallOption3Button:SetScript('OnClick', function() PayLayout() end)
 		PrioUIInstallOption3Button:SetText(L["Healer: Pay"])
-	elseif PageNum == 7 then 
+	elseif PageNum == 6 then 
 		f.SubTitle:SetText(L["Installation Complete"])
 		f.Desc1:SetText(L["You are now finished with the installation process. If you are in need of technical support please visit us at http://www.tukui.org."])
 		f.Desc2:SetText(L["Please click the button below so you can setup variables and ReloadUI."])			
@@ -542,7 +542,7 @@ E.PopupDialogs["PRIOUI_DPS"] = {
 	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
 	button1 = YES,
 	button2 = NO,
-	OnAccept = function() DPSLayout() end,
+	OnAccept = function() DPSLayout(); ReloadUI() end,
 	timeout = 0,
 	whileDead = 1,
 	hideOnEscape = false,
@@ -552,7 +552,7 @@ E.PopupDialogs["PRIOUI_HEALER"] = {
 	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
 	button1 = YES,
 	button2 = NO,
-	OnAccept = function() HealerLayout() end,
+	OnAccept = function() HealerLayout(); ReloadUI() end,
 	timeout = 0,
 	whileDead = 1,
 	hideOnEscape = false,
@@ -561,7 +561,7 @@ E.PopupDialogs["PRIOUI_PAY"] = {
 	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
 	button1 = YES,
 	button2 = NO,
-	OnAccept = function() PayLayout() end,
+	OnAccept = function() PayLayout(); ReloadUI() end,
 	timeout = 0,
 	whileDead = 1,
 	hideOnEscape = false,

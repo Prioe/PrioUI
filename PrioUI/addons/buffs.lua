@@ -2,10 +2,8 @@ local E, L, V, P, G = unpack(ElvUI);
 local PrioUI = E:GetModule('PrioUI');
 
 local function tableMerge(destTable, sourceTable)
-
 	for k,v in pairs(sourceTable) do destTable[k] = v end
 	return destTable
-
 end
 
 function PrioUI:MigrateBuffs()
