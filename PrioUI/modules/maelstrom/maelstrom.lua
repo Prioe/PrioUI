@@ -86,8 +86,22 @@ end
 
 function MS:PLAYER_TALENT_UPDATE()
 	local spec = GetSpecialization()
-	if ( spec ~= 2 ) then
+	if ( spec ~= 2 ) or not E.db.prioui.maelstrom.enable then
 		self:UnregisterEvent("UNIT_AURA")
+		MaelstromAnchor:Hide()
+	else 
+		self:RegisterEvent("UNIT_AURA")
+		MaelstromAnchor:Show()
+	end
+end
+
+function MS:UpdateAll()
+	if not E.db.prioui.maelstrom.enable then
+		self:UnregisterEvent("UNIT_AURA")
+		MaelstromAnchor:Hide()
+	else 
+		self:RegisterEvent("UNIT_AURA")
+		MaelstromAnchor:Show()
 	end
 end
 

@@ -153,6 +153,7 @@ local function SetupCVars()
 end
 
 local function DPSLayout()
+	E.data:ResetProfile(nil, true)
 	PrioUI:SetupElvUI()
 	PrioUI:SetupStuff()
 	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
@@ -164,6 +165,7 @@ local function DPSLayout()
 end
 
 local function HealerLayout()
+	E.data:ResetProfile(nil, true)
 	PrioUI:SetupElvUI()
 	PrioUI:OverwritePrioUIHeal()
 	PrioUI:SetupStuff()
@@ -175,6 +177,7 @@ local function HealerLayout()
 end
 
 local function PayLayout()
+	E.data:ResetProfile(nil, true)
 	PrioUI:SetupElvUI()
 	PrioUI:SetupStuff()
 	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
@@ -275,13 +278,13 @@ local function SetPage(PageNum)
 		f.Desc3:SetText(L["Importance: |cffD3CF00Medium|r"])
 
 		PrioUIInstallOption1Button:Show()
-		PrioUIInstallOption1Button:SetScript('OnClick', function() E:SetupTheme('classic') end)
+		PrioUIInstallOption1Button:SetScript('OnClick', function() E:SetupTheme('classic'); E.global.prioui.colorProfile = 'classic' end)
 		PrioUIInstallOption1Button:SetText(L["Classic"])	
 		PrioUIInstallOption2Button:Show()
-		PrioUIInstallOption2Button:SetScript('OnClick', function() E:SetupTheme('default') end)
+		PrioUIInstallOption2Button:SetScript('OnClick', function() E:SetupTheme('default'); E.global.prioui.colorProfile = 'default' end)
 		PrioUIInstallOption2Button:SetText(L['Dark'])
 		PrioUIInstallOption3Button:Show()
-		PrioUIInstallOption3Button:SetScript('OnClick', function() E:SetupTheme('class') end)
+		PrioUIInstallOption3Button:SetScript('OnClick', function() E:SetupTheme('class'); E.global.prioui.colorProfile = 'class' end)
 		PrioUIInstallOption3Button:SetText(CLASS)
 		PrioUIInstallOption4Button:Show()
 		PrioUIInstallOption4Button:SetText("Pixel Perfect: "..(E.private.general.pixelPerfect and "|cffFF0000no|r" or "|cff07D400yes|r"))
@@ -542,8 +545,8 @@ E.PopupDialogs["PRIOUI_DPS"] = {
 	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
 	button1 = YES,
 	button2 = NO,
-	OnAccept = function() DPSLayout(); ReloadUI() end,
-	timeout = 0,
+	OnAccept = function() DPSLayout(); E:SetupTheme(E.global.prioui.colorProfile); ReloadUI() end,
+	timeout = 0, 
 	whileDead = 1,
 	hideOnEscape = false,
 }
@@ -552,7 +555,7 @@ E.PopupDialogs["PRIOUI_HEALER"] = {
 	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
 	button1 = YES,
 	button2 = NO,
-	OnAccept = function() HealerLayout(); ReloadUI() end,
+	OnAccept = function() HealerLayout(); E:SetupTheme(E.global.prioui.colorProfile); ReloadUI() end,
 	timeout = 0,
 	whileDead = 1,
 	hideOnEscape = false,
@@ -561,7 +564,7 @@ E.PopupDialogs["PRIOUI_PAY"] = {
 	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
 	button1 = YES,
 	button2 = NO,
-	OnAccept = function() PayLayout(); ReloadUI() end,
+	OnAccept = function() PayLayout(); E:SetupTheme(E.global.prioui.colorProfile); ReloadUI() end,
 	timeout = 0,
 	whileDead = 1,
 	hideOnEscape = false,

@@ -1,6 +1,19 @@
 local E, L, V, P, G = unpack(ElvUI);
 local PrioUI = E:GetModule('PrioUI');
 
+G['prioui'] = {
+	['colorProfile'] = 'classic',
+}
+
+P['prioui'] = {
+	['maelstrom'] = {
+		['enable'] = true,
+	},
+	['bagitemlevels'] = {
+		['enable'] = true,
+	},
+}
+
 function PrioUI:GetOptions()
 	if not E.Options.args.prioui then
 		E.Options.args.prioui = {
@@ -15,6 +28,12 @@ function PrioUI:GetOptions()
 		order = 0,
 		type = "header",
 		name = "|cffFF6600PrioUI|r"..format(": |cff99ff33%s|r", PrioUI.version),
+	}
+
+	local colorProfileList = {
+		['classic'] = "Classic",
+		['default'] = "Dark",
+		['class'] = CLASS,
 	}
 
 	E.Options.args.prioui.args.installer = {
@@ -33,6 +52,14 @@ function PrioUI:GetOptions()
 				type = "execute",
 				name = "Install",
 				func = function() PrioUI:Install(); E:ToggleConfig() end,
+			},
+			colorprofile = {
+				order = 12,
+				type = 'select',
+				name = 'Color Profile',
+				get = function() return E.global.prioui.colorProfile end,
+				set = function(info, value) E.global.prioui.colorProfile = value; E:SetupTheme(value); end, 
+				values = colorProfileList,
 			},
 			dps = {
 				order = 15,
@@ -58,7 +85,22 @@ function PrioUI:GetOptions()
 		order = 1,
 		type = 'group',
 		name = 'General',
-		args = {},
+		args = {
+			maelstrom = {
+				order = 5,
+				type = 'toggle',
+				name = 'Enable Maelstrom',
+				get = function(info) return E.db.prioui[ info[#info] ].enable end,
+				set = function(info) E.db.prioui[ info[#info] ].enable = not E.db.prioui[ info[#info] ].enable; E:GetModule('Maelstrom'):PLAYER_TALENT_UPDATE() end,
+			},
+			bagitemlevels = {
+				order = 5,
+				type = 'toggle',
+				name = 'Itemlevels in Bag',
+				get = function(info) return E.db.prioui[ info[#info] ].enable end,
+				set = function(info) E.db.prioui[ info[#info] ].enable = not E.db.prioui[ info[#info] ].enable; E:GetModule('BagItemLevel'):CreateItemLevels() end,
+			},
+		},
 	}
 
 end

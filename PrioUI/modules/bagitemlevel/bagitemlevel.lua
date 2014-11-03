@@ -15,13 +15,22 @@ function BL:UpdateSlots(bagID, slotID)
 			f.Bags[bagID][slotID].itemLevel:Show() 
 		end
 	end
+	if not E.db.prioui.bagitemlevels.enable then 
+		f.Bags[bagID][slotID].itemLevel:Hide()
+	end
 
 end
 
 function BL:UpdateBagSlots(bagID)
-	if not GetContainerNumSlots(bagID) then return; end
+	if not E.db.prioui.bagitemlevels.enable or not GetContainerNumSlots(bagID) then return; end
 	for slotID = 1, GetContainerNumSlots(bagID) do
 		BL:UpdateSlots(bagID,slotID)
+	end
+end
+
+function BL:UpdateAll()
+	for bagID = 0,4 do
+		self:UpdateBagSlots(bagID)
 	end
 end
 

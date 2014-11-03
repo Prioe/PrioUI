@@ -1,6 +1,6 @@
 ## Interface: 60000
 ## Title: |cffFF6600PrioUI|r
-## Version: 1.22
+## Version: 1.23.0-beta
 ## Notes: Core for PrioUI.
 ## Author: EU - Prio#2790
 ## RequiredDep: ElvUI

@@ -109,6 +109,7 @@ function PrioUI:SetupElvUI()
 	E.db.general.experience.width = 500
 
 	--Movers
+	if not E.db.movers then E.db.movers = {}; end
 	E.db.movers.ActionBG_Mover = "BOTTOMElvUIParentBOTTOM0429"
 	E.db.movers.AlertFrameMover = "TOPElvUIParentTOP0-45"
 	E.db.movers.AltPowerBarMover = "TOPElvUIParentTOP0-84"
