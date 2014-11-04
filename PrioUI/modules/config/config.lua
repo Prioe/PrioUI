@@ -89,7 +89,7 @@ function PrioUI:GetOptions()
 		args = {
 			misc = {
 				order = -1,
-				name = 'Miscellaneous'
+				name = 'Miscellaneous',
 				type = 'group',
 				args = {},
 			},
