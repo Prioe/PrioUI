@@ -85,20 +85,41 @@ function PrioUI:GetOptions()
 		order = 1,
 		type = 'group',
 		name = 'General',
+		childGroups = 'tab',
 		args = {
-			maelstrom = {
-				order = 5,
-				type = 'toggle',
-				name = 'Enable Maelstrom',
-				get = function(info) return E.db.prioui[ info[#info] ].enable end,
-				set = function(info) E.db.prioui[ info[#info] ].enable = not E.db.prioui[ info[#info] ].enable; E:GetModule('Maelstrom'):PLAYER_TALENT_UPDATE() end,
+			misc = {
+				order = -1,
+				name = 'Miscellaneous'
+				type = 'group',
+				args = {},
 			},
-			bagitemlevels = {
-				order = 5,
-				type = 'toggle',
-				name = 'Itemlevels in Bag',
-				get = function(info) return E.db.prioui[ info[#info] ].enable end,
-				set = function(info) E.db.prioui[ info[#info] ].enable = not E.db.prioui[ info[#info] ].enable; E:GetModule('BagItemLevel'):CreateItemLevels() end,
+			maelstrom = {
+				order = 30,
+				name = 'Maelstrom',
+				type = 'group',
+				args = {
+					enable = {
+						order = 5,
+						type = 'toggle',
+						name = 'Enable',
+						get = function(info) return E.db.prioui[ info[#info-1] ][ info[#info] ] end,
+						set = function(info) E.db.prioui[ info[#info-1] ][ info[#info] ] = not E.db.prioui[ info[#info-1] ][ info[#info] ]; E:GetModule('Maelstrom'):PLAYER_TALENT_UPDATE() end,
+					},
+				},
+			},
+			bags = {
+				order = 35,
+				name = 'Bags',
+				type = 'group',
+				args = {
+					bagitemlevels = {
+						order = 5,
+						type = 'toggle',
+						name = 'Itemlevels in Bag',
+						get = function(info) return E.db.prioui[ info[#info] ].enable end,
+						set = function(info) E.db.prioui[ info[#info] ].enable = not E.db.prioui[ info[#info] ].enable; E:GetModule('BagItemLevel'):CreateItemLevels() end,
+					},
+				},
 			},
 		},
 	}

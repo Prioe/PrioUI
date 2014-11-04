@@ -95,25 +95,13 @@ function MS:PLAYER_TALENT_UPDATE()
 	end
 end
 
-function MS:UpdateAll()
-	if not E.db.prioui.maelstrom.enable then
-		self:UnregisterEvent("UNIT_AURA")
-		MaelstromAnchor:Hide()
-	else 
-		self:RegisterEvent("UNIT_AURA")
-		MaelstromAnchor:Show()
-	end
-end
-
 function MS:Initialize()
-
 	if E.myclass..GetSpecialization() == "SHAMAN2" then
 		self:CreateFrames()
 		self:RegisterEvent("UNIT_AURA")
 		self:RegisterEvent("PLAYER_TALENT_UPDATE")
 		E:CreateMover(MaelstromAnchor, "Maelstrom_Mover", "Maelstrom Mover", nil, nil, nil, "ALL") --overlay, snapoffset, postdrag, moverTypes
 	end
-
 end
 
 E:RegisterModule(MS:GetName());
