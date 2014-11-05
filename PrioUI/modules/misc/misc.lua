@@ -28,7 +28,6 @@ function PM:OverwriteMinimapFrameLevel()
 	MinimapCluster:HookScript("OnEnter", function(self)
 		if not InCombatLockdown() and E.db.prioui.misc.mmframelevel then
 			self:SetFrameLevel(1)
-			print("asd")
 		end	
 	end)
 end
