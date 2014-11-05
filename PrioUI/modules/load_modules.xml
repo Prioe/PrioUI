@@ -3,4 +3,5 @@
 	<Include file="maelstrom\load_maelstrom.xml"/>
 	<Include file="config\load_config.xml"/>
 	<Include file="bagitemlevel\load_bagitemlevel.xml"/>
+	<Include file="misc\load_misc.xml"/>
 </Ui>

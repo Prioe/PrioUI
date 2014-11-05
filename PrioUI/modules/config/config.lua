@@ -12,6 +12,10 @@ P['prioui'] = {
 	['bagitemlevels'] = {
 		['enable'] = true,
 	},
+	['misc'] = {
+		['skadaworkaround'] = true,
+		['mmframelevel'] = true,
+	},
 }
 
 function PrioUI:GetOptions()
@@ -85,13 +89,35 @@ function PrioUI:GetOptions()
 		order = 1,
 		type = 'group',
 		name = 'General',
-		childGroups = 'tab',
+		childGroups = 'select',
 		args = {
+			intro = {
+				order = 1,
+				name = "Adjust the tweaks added with PrioUI.",
+				type = 'description',
+			},
 			misc = {
 				order = -1,
 				name = 'Miscellaneous',
 				type = 'group',
-				args = {},
+				args = {
+					skadaworkaround = {
+						order = 5,
+						type = 'toggle',
+						name = 'Skada Hide Fix',
+						desc = 'Kinda deadly fix to prevent Skada from randomly hiding itself. |cffFF0000Note:|r It will also prevent you form hiding it.',
+						get = function(info) return E.db.prioui[ info[#info-1] ][ info[#info] ] end,
+						set = function(info) E.db.prioui[ info[#info-1] ][ info[#info] ] = not E.db.prioui[ info[#info-1] ][ info[#info] ]; end,
+					},
+					mmframelevel = {
+						order = 5,
+						type = 'toggle',
+						name = 'Calendar Fix',
+						desc = 'This stops the Minimap Cluster to get a higher Frame Level than the clock and prevent you from accessing your calendar.',
+						get = function(info) return E.db.prioui[ info[#info-1] ][ info[#info] ] end,
+						set = function(info) E.db.prioui[ info[#info-1] ][ info[#info] ] = not E.db.prioui[ info[#info-1] ][ info[#info] ]; end,
+					},
+				},
 			},
 			maelstrom = {
 				order = 30,
@@ -104,6 +130,13 @@ function PrioUI:GetOptions()
 						name = 'Enable',
 						get = function(info) return E.db.prioui[ info[#info-1] ][ info[#info] ] end,
 						set = function(info) E.db.prioui[ info[#info-1] ][ info[#info] ] = not E.db.prioui[ info[#info-1] ][ info[#info] ]; E:GetModule('Maelstrom'):PLAYER_TALENT_UPDATE() end,
+					},
+					copydetatched = {
+						order = 10,
+						type = 'execute',
+						name = 'Copy from ElvUI',
+						desc = 'Copy the ElvUI Settings of the detached Classbar',
+						func = function() end,
 					},
 				},
 			},
