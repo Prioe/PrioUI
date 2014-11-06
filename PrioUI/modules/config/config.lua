@@ -14,6 +14,7 @@ P['prioui'] = {
 	},
 	['misc'] = {
 		['skadaworkaround'] = true,
+		['showskadamessage'] = false,
 		['mmframelevel'] = true,
 	},
 }
@@ -100,22 +101,27 @@ function PrioUI:GetOptions()
 				order = -1,
 				name = 'Miscellaneous',
 				type = 'group',
+				get = function(info) return E.db.prioui[ info[#info-1] ][ info[#info] ] end,
+				set = function(info) E.db.prioui[ info[#info-1] ][ info[#info] ] = not E.db.prioui[ info[#info-1] ][ info[#info] ]; end,
 				args = {
 					skadaworkaround = {
 						order = 5,
 						type = 'toggle',
 						name = 'Skada Hide Fix',
-						desc = 'Kinda deadly fix to prevent Skada from randomly hiding itself. |cffFF0000Note:|r It will also prevent you form hiding it.',
-						get = function(info) return E.db.prioui[ info[#info-1] ][ info[#info] ] end,
-						set = function(info) E.db.prioui[ info[#info-1] ][ info[#info] ] = not E.db.prioui[ info[#info-1] ][ info[#info] ]; end,
+						desc = 'Temporary fix to prevent Skada from randomly hiding itself.',
+					},
+					showskadamessage = {
+						order = 6,
+						type = 'toggle',
+						name = 'Show Message',
+						desc = 'Notifies you if something tries to hide your Skada Windows.',
+						disabled = function() return not E.db.prioui.misc.skadaworkaround end,
 					},
 					mmframelevel = {
-						order = 5,
+						order = 10,
 						type = 'toggle',
 						name = 'Calendar Fix',
-						desc = 'This stops the Minimap Cluster to get a higher Frame Level than the clock and prevent you from accessing your calendar.',
-						get = function(info) return E.db.prioui[ info[#info-1] ][ info[#info] ] end,
-						set = function(info) E.db.prioui[ info[#info-1] ][ info[#info] ] = not E.db.prioui[ info[#info-1] ][ info[#info] ]; end,
+						desc = 'This stops the Minimap Cluster to get a higher Frame Level than the clock and prevent you from accessing your calendar.',			
 					},
 				},
 			},

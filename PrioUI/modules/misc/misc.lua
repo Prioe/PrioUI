@@ -2,6 +2,7 @@ local E, L, V, P, G = unpack(ElvUI);
 local PM = E:NewModule('PrioMisc', 'AceEvent-3.0');
 
 function PM:SkadaWorkaround()
+	local _G = _G
 	if not _G["Skada"] then return; end
 	local AS = unpack(AddOnSkins)
 	--C&P AddOnSkins
@@ -18,10 +19,36 @@ function PM:SkadaWorkaround()
 		hooksecurefunc(window, "Hide", function()
 			if E.db.prioui.misc.skadaworkaround then
 				window:Show()
-				E:GetModule('PrioUI'):Print("Something tried to hide your Skada Window("..window:GetName()..")!")
+				if E.db.prioui.misc.showskadamessage then
+					E:GetModule('PrioUI'):Print("Something tried to hide your Skada Window("..window:GetName()..")!")
+				end
 			end
 		end)
 	end
+	hooksecurefunc(AS, "Embed_Hide", function()
+		AS:Embed_Show()
+		if E.db.prioui.misc.showskadamessage then
+			E:GetModule('PrioUI'):Print("Something tried to hide your Embed Window!")
+		end
+	end)
+	hooksecurefunc(AS, "CreateEmbedSystem", function()
+		for _,v in pairs({
+			_G["EmbedSystem_MainWindow"],
+			_G["EmbedSystem_LeftWindow"],
+			_G["EmbedSystem_RightWindow"],
+		}) do
+			--if v then
+				hooksecurefunc(v, "Hide", function()
+					if E.db.prioui.misc.skadaworkaround then
+						v:Show()
+						if E.db.prioui.misc.showskadamessage then
+							E:GetModule('PrioUI'):Print("Something tried to hide your Embed Window("..string.match(v:GetName(), "EmbedSystem_(%w+)Window")..")!")	
+						end
+					end
+				end)
+			--end
+		end
+	end)
 end
 
 function PM:OverwriteMinimapFrameLevel()
@@ -33,6 +60,7 @@ function PM:OverwriteMinimapFrameLevel()
 end
 
 function PM:Initialize()
+	--self:RegisterEvent("PLAYER_ENTERING_WORLD", "SkadaWorkaround")
 	self:SkadaWorkaround()
 	self:OverwriteMinimapFrameLevel()
 end
