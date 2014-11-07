@@ -152,40 +152,38 @@ local function SetupCVars()
 	InterfaceOptionsActionBarsPanelPickupActionKeyDropDown:RefreshValue()	
 end
 
-local function DPSLayout()
-	E.data:ResetProfile(nil, true)
-	PrioUI:SetupElvUI()
-	PrioUI:SetupStuff()
-	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-	if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
-	if _G["Skada"] then PrioUI:SetupSkada(); end
-	if _G["ExtraCD"] then PrioUI:SetupExtraCD(); end	
-	if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
-	E:UpdateAll(true)
-end
-
-local function HealerLayout()
-	E.data:ResetProfile(nil, true)
-	PrioUI:SetupElvUI()
-	PrioUI:OverwritePrioUIHeal()
-	PrioUI:SetupStuff()
-	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-	if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
-	if _G["Skada"] then PrioUI:SetupSkada(); end
-	if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
-	E:UpdateAll(true)	
-end
-
-local function PayLayout()
-	E.data:ResetProfile(nil, true)
-	PrioUI:SetupElvUI()
-	PrioUI:SetupStuff()
-	if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-	if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
-	if _G["Skada"] then PrioUI:SetupSkada(); end
-	PrioUI:OverwritePrioUIPay()
-	if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
-	E:UpdateAll(true)	
+function PrioUI:SetupLayout(layout)
+	if layout == "dps" then
+		E.data:ResetProfile(nil, true)
+		PrioUI:SetupElvUI()
+		PrioUI:SetupStuff()
+		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
+		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
+		if _G["Skada"] then PrioUI:SetupSkada(); end
+		if _G["ExtraCD"] then PrioUI:SetupExtraCD(); end	
+		if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
+		E:UpdateAll(true)
+	elseif layout == "heal" then
+		E.data:ResetProfile(nil, true)
+		PrioUI:SetupElvUI()
+		PrioUI:OverwritePrioUIHeal()
+		PrioUI:SetupStuff()
+		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
+		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
+		if _G["Skada"] then PrioUI:SetupSkada(); end
+		if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
+		E:UpdateAll(true)	
+	elseif layout == "pay" then
+		E.data:ResetProfile(nil, true)
+		PrioUI:SetupElvUI()
+		PrioUI:SetupStuff()
+		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
+		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
+		if _G["Skada"] then PrioUI:SetupSkada(); end
+		PrioUI:OverwritePrioUIPay()
+		if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
+		E:UpdateAll(true)
+	end
 end
 
 local function ResetAll()
@@ -289,13 +287,13 @@ local function SetPage(PageNum)
 		f.Desc3:SetText(L["Importance: |cff07D400High|r"])
 
 		PrioUIInstallOption1Button:Show()
-		PrioUIInstallOption1Button:SetScript('OnClick', function() DPSLayout() end)
+		PrioUIInstallOption1Button:SetScript('OnClick', function() PrioUI:SetupLayout('dps'); E:SetupTheme(E.global.prioui.colorProfile) end)
 		PrioUIInstallOption1Button:SetText(L["DPS/Tank"])	
 		PrioUIInstallOption2Button:Show()
-		PrioUIInstallOption2Button:SetScript('OnClick', function() HealerLayout() end)
+		PrioUIInstallOption2Button:SetScript('OnClick', function() PrioUI:SetupLayout('heal'); E:SetupTheme(E.global.prioui.colorProfile) end)
 		PrioUIInstallOption2Button:SetText(L["Healer"])
 		PrioUIInstallOption3Button:Show()
-		PrioUIInstallOption3Button:SetScript('OnClick', function() PayLayout() end)
+		PrioUIInstallOption3Button:SetScript('OnClick', function() PrioUI:SetupLayout('pay'); E:SetupTheme(E.global.prioui.colorProfile) end)
 		PrioUIInstallOption3Button:SetText(L["Healer: Pay"])
 	elseif PageNum == 6 then 
 		f.SubTitle:SetText(L["Installation Complete"])
@@ -531,34 +529,23 @@ local function InstallComplete()
 	ReloadUI()
 end
 
-E.PopupDialogs["PRIOUI_DPS"] = {
-	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
-	button1 = YES,
-	button2 = NO,
-	OnAccept = function() DPSLayout(); E:SetupTheme(E.global.prioui.colorProfile); ReloadUI() end,
-	timeout = 0, 
-	whileDead = 1,
-	hideOnEscape = false,
-}
-
-E.PopupDialogs["PRIOUI_HEALER"] = {
-	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
-	button1 = YES,
-	button2 = NO,
-	OnAccept = function() HealerLayout(); E:SetupTheme(E.global.prioui.colorProfile); ReloadUI() end,
-	timeout = 0,
-	whileDead = 1,
-	hideOnEscape = false,
-}
-E.PopupDialogs["PRIOUI_PAY"] = {
-	text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
-	button1 = YES,
-	button2 = NO,
-	OnAccept = function() PayLayout(); E:SetupTheme(E.global.prioui.colorProfile); ReloadUI() end,
-	timeout = 0,
-	whileDead = 1,
-	hideOnEscape = false,
-}
+function PrioUI:InitiateStaticPopups()
+	for k,v in pairs({
+		['PRIOUI_DPS'] = 'dps',
+		['PRIOUI_PAY'] = 'pay',
+		['PRIOUI_HEAL'] = 'heal',
+	}) do
+		E.PopupDialogs[k] = {
+			text = "This will set all the settings of your current profiles to PrioUI defaults. To prevent losing your own settings, you should backup and delete your WTF-folder. Are you sure you want to continue?",
+			button1 = YES,
+			button2 = NO,
+			OnAccept = function() PrioUI:SetupLayout(v); E:SetupTheme(E.global.prioui.colorProfile); ReloadUI() end,
+			timeout = 0, 
+			whileDead = 1,
+			hideOnEscape = false,
+		}
+	end
+end
 
 E.private.sle.install_complete = GetAddOnMetadata("ElvUI_SLE", "Version")
 

@@ -35,12 +35,6 @@ function PrioUI:GetOptions()
 		name = "|cffFF6600PrioUI|r"..format(": |cff99ff33%s|r", PrioUI.version),
 	}
 
-	local colorProfileList = {
-		['classic'] = "Classic",
-		['default'] = "Dark",
-		['class'] = CLASS,
-	}
-
 	E.Options.args.prioui.args.installer = {
 		order = 1,
 		type = 'group',
@@ -64,7 +58,11 @@ function PrioUI:GetOptions()
 				name = 'Color Profile',
 				get = function() return E.global.prioui.colorProfile end,
 				set = function(info, value) E.global.prioui.colorProfile = value; E:SetupTheme(value); end, 
-				values = colorProfileList,
+				values = {
+					['classic'] = "Classic",
+					['default'] = "Dark",
+					['class'] = CLASS,
+				},
 			},
 			dps = {
 				order = 15,
@@ -76,7 +74,7 @@ function PrioUI:GetOptions()
 				order = 20,
 				type = "execute",
 				name = "Healer",
-				func = function() E:StaticPopup_Show("PRIOUI_HEALER") end,
+				func = function() E:StaticPopup_Show("PRIOUI_HEAL") end,
 			},
 			pay = {
 				order = 25,

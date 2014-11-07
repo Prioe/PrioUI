@@ -9,6 +9,7 @@ function PrioUI:Print(msg)
 end
 
 function PrioUI:Initialize()
+	self:InitiateStaticPopups()
 	if not E.private.install_complete then E.private.install_complete = "prioincomplete"; end
 	if  E.private.install_complete == "prioincomplete" then PrioUI:Install(); end
 	EP:RegisterPlugin(addon,self.GetOptions)
