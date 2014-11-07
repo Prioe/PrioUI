@@ -37,7 +37,7 @@ function PM:SkadaWorkaround()
 			_G["EmbedSystem_LeftWindow"],
 			_G["EmbedSystem_RightWindow"],
 		}) do
-			--if v then
+			if v then
 				hooksecurefunc(v, "Hide", function()
 					if E.db.prioui.misc.skadaworkaround then
 						v:Show()
@@ -46,7 +46,7 @@ function PM:SkadaWorkaround()
 						end
 					end
 				end)
-			--end
+			end
 		end
 	end)
 end
@@ -60,7 +60,6 @@ function PM:OverwriteMinimapFrameLevel()
 end
 
 function PM:Initialize()
-	--self:RegisterEvent("PLAYER_ENTERING_WORLD", "SkadaWorkaround")
 	self:SkadaWorkaround()
 	self:OverwriteMinimapFrameLevel()
 end

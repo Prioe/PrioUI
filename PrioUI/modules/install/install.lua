@@ -261,16 +261,6 @@ local function SetPage(PageNum)
 		PrioUIInstallOption1Button:Show()
 		PrioUIInstallOption1Button:SetScript("OnClick", function() SetupChat() end)
 		PrioUIInstallOption1Button:SetText("PrioUI Chat")
-
-	--[[elseif PageNum == 4 then
-		f.SubTitle:SetText(L["Armory Mode"])
-		f.Desc1:SetText(L["Enable S&L Armory\n(Deatiled Character & Inspect frames)\n|cffFF0000Note:|r This is currently a beta option."])
-		f.Desc2:SetText(L["This will enable S&L Armory mode that will show more detailed information at a quick glance on the toons you inspect as well as your own character."])
-		f.Desc3:SetText(L["Importance: |cffFF0000Low|r"])
-		
-		PrioUIInstallOption1Button:Show()
-		PrioUIInstallOption1Button:SetScript('OnClick', function() E.private.sle.characterframeoptions.enable = true; E.private.sle.inspectframeoptions.enable = true; end)
-		PrioUIInstallOption1Button:SetText(L["Enable"])	]]
 	elseif PageNum == 4 then
 		f.SubTitle:SetText(L['Theme Setup'])
 		f.Desc1:SetText(L['Choose a theme layout you wish to use for your initial setup.'])
