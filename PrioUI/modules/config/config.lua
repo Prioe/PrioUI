@@ -139,7 +139,7 @@ function PrioUI:GetOptions()
 						order = 10,
 						type = 'execute',
 						name = 'Copy from ElvUI',
-						desc = 'Copy the ElvUI Settings of the detached Classbar',
+						desc = 'Copy the ElvUI Settings of the detached Classbar.',
 						func = function() end,
 					},
 				},

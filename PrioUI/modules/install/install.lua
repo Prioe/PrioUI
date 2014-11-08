@@ -275,10 +275,10 @@ local function SetPage(PageNum)
 		PrioUIInstallOption3Button:SetScript('OnClick', function() E:SetupTheme('class'); E.global.prioui.colorProfile = 'class' end)
 		PrioUIInstallOption3Button:SetText(CLASS)
 		PrioUIInstallOption4Button:Show()
-		PrioUIInstallOption4Button:SetText("Pixel Perfect: "..(E.private.general.pixelPerfect and "|cffFF0000no|r" or "|cff07D400yes|r"))
+		PrioUIInstallOption4Button:SetText("Pixel Perfect: "..(E.private.general.pixelPerfect and "|cff07D400On|r" or "|cffFF0000Off|r"))
 		PrioUIInstallOption4Button:SetScript('OnClick', function()
 		 	E.private.general.pixelPerfect = not E.private.general.pixelPerfect; 
-		 	PrioUIInstallOption4Button:SetText("Pixel Perfect: "..(E.private.general.pixelPerfect and "|cffFF0000no|r" or "|cff07D400yes|r"))
+		 	PrioUIInstallOption4Button:SetText("Pixel Perfect: "..(E.private.general.pixelPerfect and "|cff07D400On|r" or "|cffFF0000Off|r"))
 		 	end)
 	elseif PageNum == 5 then
 		f.SubTitle:SetText(L["Role Setup"])
