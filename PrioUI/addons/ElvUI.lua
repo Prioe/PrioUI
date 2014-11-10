@@ -560,19 +560,6 @@ function PrioUI:OverwritePrioUIPay()
 	E.db.actionbar.bar3.buttons = 10
 	E.db.actionbar.bar3.buttonsPerRow = 2
 
-	--xCT
-	do
-		if not xCT_Plus then return end
-		local x = xCT_Plus
-		x.db.profile.frames.healing.enableRealmNames = false
-		x.db.profile.frames.healing.enableClassNames = false
-		x.db.profile.frames.healing.showFriendlyHealers = false
-		x.db.profile.frames.healing.X = -918
-		x.db.profile.frames.healing.Y = 210
-		x.db.profile.frames.damage.Y = 32
-		x.db.profile.frames.damage.X = -918
-		x.cvar_udpate()
-	end	
 end
 
 function PrioUI:IsResourceClass()

@@ -5,7 +5,7 @@ if not xCT_Plus then return end
 
 local x = xCT_Plus
 
-function PrioUI:SetupxCT()
+function PrioUI:SetupxCT(profile)
 
 		x.db.profile.blizzardFCT.enabled = true
 		x.db.profile.blizzardFCT.fontName = "Interface\\AddOns\\PrioUI\\media\\fonts\\DESIB___.ttf"
@@ -71,9 +71,19 @@ function PrioUI:SetupxCT()
 				["fontOutline"] = "2OUTLINE",
 				["Height"] = 145,
 				["font"] = "ElvUI Font",
-				--["enableScrollable"] = true,
+				["enableScrollable"] = false,
 			}
 		}
+
+		if profile == pay then  
+			x.db.profile.frames.healing.enableRealmNames = false
+			x.db.profile.frames.healing.enableClassNames = false
+			x.db.profile.frames.healing.showFriendlyHealers = false
+			x.db.profile.frames.healing.X = -918
+			x.db.profile.frames.healing.Y = 210
+			x.db.profile.frames.damage.Y = 32
+			x.db.profile.frames.damage.X = -918
+		end
 
 		--x:UpdateFrames()
 		x.cvar_udpate()
