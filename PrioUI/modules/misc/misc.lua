@@ -60,7 +60,7 @@ function PM:OverwriteMinimapFrameLevel()
 end
 
 function PM:Initialize()
-	self:SkadaWorkaround()
+	--self:SkadaWorkaround()
 	self:OverwriteMinimapFrameLevel()
 end
 
