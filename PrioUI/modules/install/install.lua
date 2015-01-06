@@ -158,6 +158,7 @@ function PrioUI:SetupLayout(layout)
 		PrioUI:SetupElvUI()
 		PrioUI:SetupStuff()
 		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
+		if _G["BrokerGarrison"] then PrioUI:SetupBroker_Garrison(); end
 		if _G["xCT_Plus"] then PrioUI:SetupxCT("pay"); end
 		if _G["Skada"] then PrioUI:SetupSkada(); end
 		if _G["ExtraCD"] then PrioUI:SetupExtraCD(); end	
@@ -169,6 +170,7 @@ function PrioUI:SetupLayout(layout)
 		PrioUI:OverwritePrioUIHeal()
 		PrioUI:SetupStuff()
 		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
+		if _G["BrokerGarrison"] then PrioUI:SetupBroker_Garrison(); end
 		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
 		if _G["Skada"] then PrioUI:SetupSkada(); end
 		if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
@@ -178,6 +180,7 @@ function PrioUI:SetupLayout(layout)
 		PrioUI:SetupElvUI()
 		PrioUI:SetupStuff()
 		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
+		if _G["BrokerGarrison"] then PrioUI:SetupBroker_Garrison(); end
 		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
 		if _G["Skada"] then PrioUI:SetupSkada(); end
 		PrioUI:OverwritePrioUIPay()

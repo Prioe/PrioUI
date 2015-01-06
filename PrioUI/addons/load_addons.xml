@@ -7,4 +7,5 @@
 	<Script file='xCT.lua'/>
 	<Script file='tools.lua'/>
 	<Script file='buffs.lua'/>
+	<Script file='Broker_Garrison.lua'/>
 </Ui>

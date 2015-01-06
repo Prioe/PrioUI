@@ -85,5 +85,13 @@ function PrioUI:SetupStuff()
 		AUCTIONATOR_A_TIPS = 0
 		AUCTIONATOR_D_TIPS = 0
 	end
+
+	if _G["BagSync"] then
+		BagSyncOpt.showGuildNames = false
+		BagSyncOpt.showTotal = false
+		BagSyncOpt.enableUnitClass = true
+		BagSyncOpt.enableTooltipSeperator = false
+		BagSyncOpt.enableMinimap = false
+	end
 	
 end

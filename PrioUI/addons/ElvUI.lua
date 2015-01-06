@@ -289,23 +289,37 @@ function PrioUI:SetupElvUI()
 	E.db.unitframe.units.focus.castbar.height = 25
 	
 	-- Datatexts
+	-- DP_1 DP_2 Top_Center DP_3 DP_4
 	E.db.datatexts.font = "ElvUI Font"
 	E.db.datatexts.fontSize = 12
 	E.db.datatexts.time24 = true	
-	E.db.datatexts.panels.DP_1.right = "Talent/Loot Specialization"
+	-- Top
 	E.db.datatexts.panels.DP_1.left = "System"	
+	E.db.datatexts.panels.DP_1.middle = "Talent/Loot Specialization"
+	if _G["BrokerGarrison"] then
+		E.db.datatexts.panels.DP_1.right = "Broker_GarrisonBuilding"
+		E.db.datatexts.panels.DP_2.left = "Broker_GarrisonMission"	
+	end
 	E.db.datatexts.panels.DP_4.right = "Time"
+	if _G["TimeToDie"] then E.db.datatexts.panels.Top_Center = "TimeToDie" end
+	if _G["WIM"] then 
+		E.db.datatexts.panels.DP_1.middle = "WIM" 
+		E.db.datatexts.panels.DP_1.right = "Talent/Loot Specialization"
+		if _G["BrokerGarrison"] then
+			E.db.datatexts.panels.DP_2.left = "Broker_GarrisonBuilding"
+			E.db.datatexts.panels.DP_2.middle = "Broker_GarrisonMission"	
+		end
+	end
+	if _G["BugSack"] then E.db.datatexts.panels.DP_4.left = "BugSack" end
+	if _G["AtlasLoot"] then E.db.datatexts.panels.DP_4.middle = "AtlasLoot" end
+	if _G["SavedInstances"] then E.db.datatexts.panels.DP_3.right = "SavedInstances" end
+	if _G["BagSync"] then E.db.datatexts.panels.DP_3.right = "BagSyncLDB" end
+	-- Chat Panels
 	E.db.datatexts.panels.RightChatDataPanel.left = "Bags"
 	E.db.datatexts.panels.RightChatDataPanel.middle = "Durability"
 	E.db.datatexts.panels.LeftChatDataPanel.left = PrioUI.Classstats[classSpec][1]
 	E.db.datatexts.panels.LeftChatDataPanel.middle = PrioUI.Classstats[classSpec][2]
 	E.db.datatexts.panels.LeftChatDataPanel.right = PrioUI.Classstats[classSpec][3]
-	if _G["TimeToDie"] then E.db.datatexts.panels.Top_Center = "TimeToDie" end
-	if _G["WIM"] then E.db.datatexts.panels.DP_1.middle = "WIM" end
-	if _G["BugSack"] then E.db.datatexts.panels.DP_4.left = "BugSack" end
-	if _G["AtlasLoot"] then E.db.datatexts.panels.DP_4.middle = "AtlasLoot" end
-	if _G["SavedInstances"] then E.db.datatexts.panels.DP_3.right = "SavedInstances" end	
-
 
 	-- Actionbars
 	E.db.actionbar.font = "ElvUI Font"
@@ -371,8 +385,21 @@ function PrioUI:SetupElvUI()
 	E.db.sle.backgrounds.right.width = 150
 	E.db.sle.backgrounds.right.template = "Transparent"
 	
+	-- E.db.sle.uibuttons.enable = true
+	-- E.db.sle.uibuttons.position = "uib_hor"
+
+	E.db.sle.uibuttons.afunc.enable = true
+	E.db.sle.uibuttons.rfunc.enable = false
+	E.db.sle.uibuttons.rfunc.called = "Custom"
+	E.db.sle.uibuttons.cfunc.enable = true
+	E.db.sle.uibuttons.cfunc.called = "Elv"
 	E.db.sle.uibuttons.enable = true
 	E.db.sle.uibuttons.position = "uib_hor"
+	E.db.sle.uibuttons.anchor = "BOTTOMRIGHT"
+	E.db.sle.uibuttons.sfunc.enable = true
+	E.db.sle.uibuttons.sfunc.called = "DND"
+	E.db.sle.uibuttons.point = "TOPRIGHT"
+	E.db.sle.uibuttons.yoffset = -4
 	
 	E.db.sle.datatext.top.enabled = true
 	E.db.sle.datatext.top.transparent = true
@@ -391,6 +418,7 @@ function PrioUI:SetupElvUI()
 	E.db.sle.datatext.dp4.enabled = true
 	
 	E.db.sle.exprep.replong = true
+	E.db.sle.raidmarkers.enable = false
 
 	E.db.sle.minimap.enable = true
 	E.db.sle.minimap.mapicons.iconsize = 24

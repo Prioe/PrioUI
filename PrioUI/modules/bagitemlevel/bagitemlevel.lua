@@ -9,9 +9,15 @@ function BL:UpdateSlots(bagID, slotID)
 	f.Bags[bagID][slotID].itemLevel:Hide()
 	if GetContainerItemID(bagID, slotID) then
 		local itemLink = GetContainerItemLink(bagID, slotID)
-		local itemLevelString = select(4, GetItemInfo(itemLink))
-		if itemLevelString and ((select(6, GetItemInfo(itemLink)) == "Armor") or (select(6, GetItemInfo(itemLink)) == "Weapon")) then
-			f.Bags[bagID][slotID].itemLevel:SetText("|cffffff00"..itemLevelString.."|r") 
+		local itemName, _, itemQuality, itemLevelString, _, itemType = GetItemInfo(itemLink)
+		if itemLevelString and ((itemType == "Armor") or (itemType == "Weapon")) then
+			f.Bags[bagID][slotID].itemLevel:SetText("|cffffff00"..itemLevelString.."|r")
+			 if (tonumber(itemLevelString) < 630) and
+			     not (string.match(itemName, "Weaponry") or string.match(itemName, "Armor Set")) and
+			     ((itemQuality == 2) or (itemQuality == 3)) and
+			     not string.match(itemName, "Primal Combatant") then
+			 	f.Bags[bagID][slotID].itemLevel:SetText("|cffff4242"..itemLevelString.."|r")
+			 end
 			f.Bags[bagID][slotID].itemLevel:Show() 
 		end
 	end
