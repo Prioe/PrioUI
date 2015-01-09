@@ -458,6 +458,7 @@ function PrioUI:SetupElvUI()
 	
 	-- Private
 	E.private.general.dmgfont = "Designer Block"
+	E.private.general.chatBubbles = "nobackdrop"
 	E.private.sle.characterframeoptions.enable = true
 	E.private.sle.minimap.mapicons.enable = true
 	E.private.sle.minimap.mapicons.barenable = true
@@ -475,6 +476,15 @@ function PrioUI:SetupElvUI()
 	-- Author Settings
 	if PrioUI:IsAuthor() == "AUTH" then 
 		E.db.actionbar.bar4.paging[E.myclass] = "[mod:shift] 7;[mod:alt] 8;"
+		if E.myname == "Andura" then 
+			E.db.bags.ignoreItems = [[Haunted Memento, Ultimate Gnomish Army Knife, Hearthstone,
+				Garrison Hearthstone, Wormhole Generator: Pandaria, Ultrasafe Transporter: Gadgetzan,
+				Ultrasafe Transporter: Toshley's Station, Wormhole Generator: Northrend, MOLL-E, Jeeves,
+				Battle Standard of Coordination, Time-Lost Artifact, Mastercraft Kalu'ak Fishing Pole,
+				Oralius' Whispering Crystal, Wormhole Centrifuge]]
+		elseif E.myname == "Prio" then
+			E.db.actionbar.bar1.paging[E.myclass] = ""
+		end
 	end
 	
 end
@@ -593,22 +603,20 @@ end
 function PrioUI:IsResourceClass()
 	local class = PrioUI.Classbar[E.myclass]
 	local spec = GetSpecialization()
-	local res
 
 	if class then
 		if type(class) == "table" then
 			for k,v in pairs(class) do
 				if k == spec then 
-					res = v
+					return v
 				else
-					res = false 
+					return false 
 				end                
 			end
 		else
-			res = class
+			return class
 		end
 	else
-		res = false
+		return false
 	end
-	return res
 end

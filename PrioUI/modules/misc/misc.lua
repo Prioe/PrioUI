@@ -59,6 +59,12 @@ function PM:OverwriteMinimapFrameLevel()
 	end)
 end
 
+local function ShowArenaFrames()
+	E.db.unitframe.units.arena.enable = true
+	UF:CreateAndUpdateUFGroup('arena', 5)
+	E.db.unitframe.units.arena.enable = false
+end
+
 function PM:Initialize()
 	--self:SkadaWorkaround()
 	self:OverwriteMinimapFrameLevel()

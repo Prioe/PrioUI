@@ -5,11 +5,10 @@ local CURRENT_PAGE = 0
 local MAX_PAGE = 6
 
 V["prioui_install_complete"] = nil
-
 local function SetupChat()
-		
+
 	FCF_ResetChatWindows()
-	FCF_SetLocked(ChatFrame1, 1)		
+	FCF_SetLocked(ChatFrame1, 1)  
 
 	for i = 1, NUM_CHAT_WINDOWS do
 		local frame = _G[format("ChatFrame%s", i)]
@@ -19,7 +18,7 @@ local function SetupChat()
 		-- move general bottom left
 		if i == 1 then
 			frame:ClearAllPoints()
-			frame:Point("BOTTOMLEFT", LeftChatToggleButton, "TOPLEFT", 1, 3)			
+			frame:Point("BOTTOMLEFT", LeftChatToggleButton, "TOPLEFT", 1, 3)            
 		elseif i == 3 then
 			frame:ClearAllPoints()
 			frame:Point("BOTTOMLEFT", RightChatDataPanel, "TOPLEFT", 1, 3)
@@ -36,8 +35,6 @@ local function SetupChat()
 			FCF_SetWindowName(frame, GENERAL)
 		elseif i == 2 then
 			FCF_SetWindowName(frame, GUILD_EVENT_LOG)
-		elseif i == 3 then 
-			FCF_SetWindowName(frame, LOOT.." / "..TRADE) 
 		end
 	end
 
@@ -48,7 +45,7 @@ local function SetupChat()
 	ChatFrame_AddMessageGroup(ChatFrame1, "GUILD")
 	ChatFrame_AddMessageGroup(ChatFrame1, "OFFICER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "GUILD_ACHIEVEMENT")
-	ChatFrame_AddMessageGroup(ChatFrame1, "WHISPER")
+	ChatFrame_AddMessageGroup(ChatFrame1, "MONSTER_BOSS_WHISPER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "MONSTER_SAY")
 	ChatFrame_AddMessageGroup(ChatFrame1, "MONSTER_EMOTE")
 	ChatFrame_AddMessageGroup(ChatFrame1, "MONSTER_YELL")
@@ -59,7 +56,7 @@ local function SetupChat()
 	ChatFrame_AddMessageGroup(ChatFrame1, "RAID_LEADER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "RAID_WARNING")
 	ChatFrame_AddMessageGroup(ChatFrame1, "INSTANCE_CHAT")
-	ChatFrame_AddMessageGroup(ChatFrame1, "INSTANCE_CHAT_LEADER")	
+	ChatFrame_AddMessageGroup(ChatFrame1, "INSTANCE_CHAT_LEADER")    
 	ChatFrame_AddMessageGroup(ChatFrame1, "BATTLEGROUND")
 	ChatFrame_AddMessageGroup(ChatFrame1, "BATTLEGROUND_LEADER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "BG_HORDE")
@@ -71,7 +68,6 @@ local function SetupChat()
 	ChatFrame_AddMessageGroup(ChatFrame1, "DND")
 	ChatFrame_AddMessageGroup(ChatFrame1, "IGNORED")
 	ChatFrame_AddMessageGroup(ChatFrame1, "ACHIEVEMENT")
-	ChatFrame_AddMessageGroup(ChatFrame1, "BN_WHISPER")
 	ChatFrame_AddMessageGroup(ChatFrame1, "BN_CONVERSATION")
 	ChatFrame_AddMessageGroup(ChatFrame1, "BN_INLINE_TOAST_ALERT")
 
@@ -82,11 +78,26 @@ local function SetupChat()
 	ChatFrame_AddMessageGroup(ChatFrame1, "COMBAT_XP_GAIN")
 	ChatFrame_AddMessageGroup(ChatFrame1, "COMBAT_HONOR_GAIN")
 	ChatFrame_AddMessageGroup(ChatFrame1, "COMBAT_GUILD_XP_GAIN")
-	ChatFrame_AddChannel(ChatFrame1, GENERAL)
+	ChatFrame_RemoveAllChannels(ChatFrame1)
+	ChangeChatColor("CHANNEL5", 0/255, 165/255, 111/256)
 
-	if (E.myname == "Prio") or E.myname == "Andura" then
+	FCF_OpenNewWindow(Chat_GetChannelShortcutName(2))
+	ChatFrame_RemoveAllMessageGroups(ChatFrame3)
+	ChatFrame_RemoveAllChannels(ChatFrame3)
+
+	if not _G["WIM"] then
+		FCF_OpenNewWindow(WHISPER)
+		ChatFrame_RemoveAllMessageGroups(ChatFrame4)
+		ChatFrame_AddMessageGroup(ChatFrame4, "WHISPER")
+		ChatFrame_AddMessageGroup(ChatFrame4, "BN_WHISPER") 
+	else
+		ChatFrame_AddMessageGroup(ChatFrame1, "WHISPER")
+		ChatFrame_AddMessageGroup(ChatFrame1, "BN_WHISPER") 
+	end
+
+	if (E.myname == "Prio") or (E.myname == "Andura") then
 		SetCVar("scriptErrors", 1)
-	end	
+	end    
 
 	-- enable classcolor automatically on login and on each character without doing /configure each time.
 	ToggleChatColorNamesByClassGroup(true, "SAY")
@@ -103,9 +114,9 @@ local function SetupChat()
 	ToggleChatColorNamesByClassGroup(true, "RAID_LEADER")
 	ToggleChatColorNamesByClassGroup(true, "RAID_WARNING")
 	ToggleChatColorNamesByClassGroup(true, "BATTLEGROUND")
-	ToggleChatColorNamesByClassGroup(true, "BATTLEGROUND_LEADER")	
+	ToggleChatColorNamesByClassGroup(true, "BATTLEGROUND_LEADER")    
 	ToggleChatColorNamesByClassGroup(true, "INSTANCE_CHAT")
-	ToggleChatColorNamesByClassGroup(true, "INSTANCE_CHAT_LEADER")		
+	ToggleChatColorNamesByClassGroup(true, "INSTANCE_CHAT_LEADER")        
 	ToggleChatColorNamesByClassGroup(true, "CHANNEL1")
 	ToggleChatColorNamesByClassGroup(true, "CHANNEL2")
 	ToggleChatColorNamesByClassGroup(true, "CHANNEL3")
@@ -126,7 +137,7 @@ local function SetupChat()
 
 		if E.db['LeftChatPanelFaded'] then
 			LeftChatToggleButton:Click()
-		end		
+		end        
 	end
 end
 
