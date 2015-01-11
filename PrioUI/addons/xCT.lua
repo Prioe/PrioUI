@@ -15,9 +15,7 @@ function PrioUI:SetupxCT(profile)
 		x.db.profile.blizzardFCT.CombatLogPeriodicSpells = true
 		x.db.profile.blizzardFCT.PetMeleeDamage = true
 			
-		x.db.profile["frameSettings"] = {
-				["clearLeavingCombat"] = true,
-			}
+		x.db.profile.frameSettings.clearLeavingCombat = true
 		x.db.profile["frames"] = {
 			["general"] = {
 				["megaDamage"] = true,
@@ -75,7 +73,7 @@ function PrioUI:SetupxCT(profile)
 			}
 		}
 
-		if profile == pay then  
+		if profile == "pay" then  
 			x.db.profile.frames.healing.enableRealmNames = false
 			x.db.profile.frames.healing.enableClassNames = false
 			x.db.profile.frames.healing.showFriendlyHealers = false

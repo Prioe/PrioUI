@@ -8,4 +8,6 @@
 	<Script file='tools.lua'/>
 	<Script file='buffs.lua'/>
 	<Script file='Broker_Garrison.lua'/>
+	<Script file='Affliced.lua'/>
+	<Script file='Gladius.lua'/>
 </Ui>

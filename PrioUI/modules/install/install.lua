@@ -5,7 +5,7 @@ local CURRENT_PAGE = 0
 local MAX_PAGE = 6
 
 V["prioui_install_complete"] = nil
-local function SetupChat()
+function PrioUI:SetupChat()
 
 	FCF_ResetChatWindows()
 	FCF_SetLocked(ChatFrame1, 1)  
@@ -141,7 +141,7 @@ local function SetupChat()
 	end
 end
 
-local function SetupCVars()
+function PrioUI:SetupCVars()
 	SetCVar("uiScale", 0.71111111111111)
 	SetCVar("useUiScale", 1)
 	SetCVar("alternateResourceText", 1)
@@ -164,40 +164,29 @@ local function SetupCVars()
 end
 
 function PrioUI:SetupLayout(layout)
+	E.data:ResetProfile(nil, true)
+	PrioUI:SetupElvUI()
+	PrioUI:SetupStuff()
+	if _G["BrokerGarrison"] then PrioUI:SetupBroker_Garrison(); end
+	if _G["Skada"] then PrioUI:SetupSkada(); end
+	if _G["Afflicted"] then PrioUI:SetupAfflicted(); end
+	if _G["Gladius"] then PrioUI:SetupGladius(); end
+	if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
+
 	if layout == "dps" then
-		E.data:ResetProfile(nil, true)
-		PrioUI:SetupElvUI()
-		PrioUI:SetupStuff()
-		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-		if _G["BrokerGarrison"] then PrioUI:SetupBroker_Garrison(); end
-		if _G["xCT_Plus"] then PrioUI:SetupxCT("pay"); end
-		if _G["Skada"] then PrioUI:SetupSkada(); end
-		if _G["ExtraCD"] then PrioUI:SetupExtraCD(); end	
-		if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
-		E:UpdateAll(true)
+		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end		
+		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end		
+		if _G["ExtraCD"] then PrioUI:SetupExtraCD(); end
 	elseif layout == "heal" then
-		E.data:ResetProfile(nil, true)
-		PrioUI:SetupElvUI()
 		PrioUI:OverwritePrioUIHeal()
-		PrioUI:SetupStuff()
-		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-		if _G["BrokerGarrison"] then PrioUI:SetupBroker_Garrison(); end
-		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
-		if _G["Skada"] then PrioUI:SetupSkada(); end
-		if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
-		E:UpdateAll(true)	
+		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end	
+		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end		
 	elseif layout == "pay" then
-		E.data:ResetProfile(nil, true)
-		PrioUI:SetupElvUI()
-		PrioUI:SetupStuff()
-		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end
-		if _G["BrokerGarrison"] then PrioUI:SetupBroker_Garrison(); end
-		if _G["xCT_Plus"] then PrioUI:SetupxCT(); end
-		if _G["Skada"] then PrioUI:SetupSkada(); end
+		if SLASH_BigWigs1 then PrioUI:SetupBigWigsDPS(); end	
+		if _G["xCT_Plus"] then PrioUI:SetupxCT("pay"); end	
 		PrioUI:OverwritePrioUIPay()
-		if PrioUI:IsAuthor() then PrioUI:MigrateBuffs(); end
-		E:UpdateAll(true)
 	end
+	E:UpdateAll(true)
 end
 
 local function ResetAll()
@@ -262,7 +251,7 @@ local function SetPage(PageNum)
 		f.Desc2:SetText(L["Please click the button below to setup your CVars."])
 		f.Desc3:SetText(L["Importance: |cff07D400High|r"])
 		PrioUIInstallOption1Button:Show()
-		PrioUIInstallOption1Button:SetScript("OnClick", SetupCVars)
+		PrioUIInstallOption1Button:SetScript("OnClick", PrioUI.SetupCVars)
 		PrioUIInstallOption1Button:SetText(L["Setup CVars"])			
 	elseif PageNum == 3 then
 		f.SubTitle:SetText(L["Chat"])
@@ -271,7 +260,7 @@ local function SetPage(PageNum)
 		f.Desc3:SetText(L["Importance: |cffD3CF00Medium|r"])
 		
 		PrioUIInstallOption1Button:Show()
-		PrioUIInstallOption1Button:SetScript("OnClick", function() SetupChat() end)
+		PrioUIInstallOption1Button:SetScript("OnClick", function() PrioUI.SetupChat() end)
 		PrioUIInstallOption1Button:SetText("PrioUI Chat")
 	elseif PageNum == 4 then
 		f.SubTitle:SetText(L['Theme Setup'])

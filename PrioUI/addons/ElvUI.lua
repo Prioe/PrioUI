@@ -313,7 +313,7 @@ function PrioUI:SetupElvUI()
 	if _G["BugSack"] then E.db.datatexts.panels.DP_4.left = "BugSack" end
 	if _G["AtlasLoot"] then E.db.datatexts.panels.DP_4.middle = "AtlasLoot" end
 	if _G["SavedInstances"] then E.db.datatexts.panels.DP_3.right = "SavedInstances" end
-	if _G["BagSync"] then E.db.datatexts.panels.DP_3.right = "BagSyncLDB" end
+	if _G["BagSync"] then E.db.datatexts.panels.DP_3.middle = "BagSyncLDB" end
 	-- Chat Panels
 	E.db.datatexts.panels.RightChatDataPanel.left = "Bags"
 	E.db.datatexts.panels.RightChatDataPanel.middle = "Durability"
@@ -477,11 +477,7 @@ function PrioUI:SetupElvUI()
 	if PrioUI:IsAuthor() == "AUTH" then 
 		E.db.actionbar.bar4.paging[E.myclass] = "[mod:shift] 7;[mod:alt] 8;"
 		if E.myname == "Andura" then 
-			E.db.bags.ignoreItems = [[Haunted Memento, Ultimate Gnomish Army Knife, Hearthstone,
-				Garrison Hearthstone, Wormhole Generator: Pandaria, Ultrasafe Transporter: Gadgetzan,
-				Ultrasafe Transporter: Toshley's Station, Wormhole Generator: Northrend, MOLL-E, Jeeves,
-				Battle Standard of Coordination, Time-Lost Artifact, Mastercraft Kalu'ak Fishing Pole,
-				Oralius' Whispering Crystal, Wormhole Centrifuge]]
+			E.db.bags.ignoreItems = "Haunted Memento, Ultimate Gnomish Army Knife, Hearthstone, Garrison Hearthstone, Wormhole Generator: Pandaria, Ultrasafe Transporter: Gadgetzan, Ultrasafe Transporter: Toshley's Station, Wormhole Generator: Northrend, MOLL-E, Jeeves, Battle Standard of Coordination, Time-Lost Artifact, Mastercraft Kalu'ak Fishing Pole, Oralius' Whispering Crystal, Wormhole Centrifuge" 
 		elseif E.myname == "Prio" then
 			E.db.actionbar.bar1.paging[E.myclass] = ""
 		end

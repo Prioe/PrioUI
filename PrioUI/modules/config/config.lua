@@ -64,6 +64,24 @@ function PrioUI:GetOptions()
 					['class'] = CLASS,
 				},
 			},
+			quickinstall = {
+				order = 13,
+				type = 'select',
+				name = 'Quick Install',
+				get = function() return "" end,
+				set = function(info, value)
+					if value == 'cvars' then PrioUI:SetupCVars() 
+					elseif value == 'chat' then PrioUI:SetupChat()
+					elseif value == 'gladius' then PrioUI:SetupGladius()
+					elseif value == 'afflicted' then PrioUI:SetupAfflicted(); E:StaticPopup_Show("GLOBAL_RL") end
+				end, 
+				values = {
+					['cvars'] = "CVars",
+					['chat'] = "Chat",
+					['gladius'] = "Gladius",
+					['afflicted'] = "Afflicted 3",
+				},
+			},
 			dps = {
 				order = 15,
 				type = "execute",
