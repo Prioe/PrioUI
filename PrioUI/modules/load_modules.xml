@@ -4,4 +4,5 @@
 	<Include file="config\load_config.xml"/>
 	<Include file="bagitemlevel\load_bagitemlevel.xml"/>
 	<Include file="misc\load_misc.xml"/>
+	<Include file="watchframe\load_watchframe.xml"/>
 </Ui>

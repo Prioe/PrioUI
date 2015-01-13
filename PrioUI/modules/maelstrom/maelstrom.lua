@@ -1,7 +1,7 @@
 local E, L, V, P, G = unpack(ElvUI);
 local MS = E:NewModule('Maelstrom', 'AceEvent-3.0');
-local LSM = LibStub("LibSharedMedia-3.0");
-local EP = LibStub("LibElvUIPlugin-1.0")
+-- local LSM = LibStub("LibSharedMedia-3.0");
+-- local EP = LibStub("LibElvUIPlugin-1.0")
 
 local PADDING = 3
 local MAX_MAELSTROM_STACKS = 5
@@ -96,7 +96,7 @@ function MS:PLAYER_TALENT_UPDATE()
 end
 
 function MS:Initialize()
-	if E.myclass..GetSpecialization() == "SHAMAN2" then
+	if GetSpecialization() and E.myclass..GetSpecialization() == "SHAMAN2" then
 		self:CreateFrames()
 		self:RegisterEvent("UNIT_AURA")
 		self:RegisterEvent("PLAYER_TALENT_UPDATE")

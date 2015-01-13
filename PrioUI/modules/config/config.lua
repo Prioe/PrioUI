@@ -12,11 +12,28 @@ P['prioui'] = {
 	['bagitemlevels'] = {
 		['enable'] = true,
 	},
+	['watchframe'] = {
+		['enable'] = true,
+		['resting'] = 'COLLAPSED',
+		['pvp'] = 'HIDDEN',
+		['arena'] = 'HIDDEN',
+		['party'] = 'HIDDEN',
+		['raid'] = 'HIDDEN',
+		['default'] = 'COLLAPSED',
+		['combat'] = 'NONE',
+	},
 	['misc'] = {
 		['skadaworkaround'] = true,
 		['showskadamessage'] = false,
 		['mmframelevel'] = true,
 	},
+}
+
+local watchFrameValues = {
+	['NONE'] = 'None',
+	['COLLAPSED'] = 'Collapsed',
+	['HIDDEN'] = 'Hidden',
+	['EXPANDED'] = 'Expanded',
 }
 
 function PrioUI:GetOptions()
@@ -173,6 +190,72 @@ function PrioUI:GetOptions()
 						name = 'Itemlevels in Bag',
 						get = function(info) return E.db.prioui[ info[#info] ].enable end,
 						set = function(info) E.db.prioui[ info[#info] ].enable = not E.db.prioui[ info[#info] ].enable; E:GetModule('BagItemLevel'):CreateItemLevels() end,
+					},
+				},
+			},
+			watchframe = {
+				order = 40,
+				name = 'Watchframe Toggle',
+				type = 'group',
+				args = {
+					enable = {
+						order = 5,
+						type = 'toggle',
+						name = 'Enable',
+						get = function(info) return E.db.prioui[ info[#info-1] ][ info[#info] ] end,
+						set = function(info) E.db.prioui[ info[#info-1] ][ info[#info] ] = not E.db.prioui[ info[#info-1] ][ info[#info] ]; E:GetModule('WatchFrameAutoToggle'):ChangeState() end,
+					},
+					dropdown = {
+						order = 10,
+						name = 'Auto Toggle',
+						type = 'group',
+						guiInline = true,
+						get = function(info) return E.db.prioui[ info[#info-2] ][ info[#info] ] end,
+						set = function(info, value) E.db.prioui[ info[#info-2] ][ info[#info] ] = value; E:GetModule('WatchFrameAutoToggle'):ChangeState() end,
+						args = {
+							default = {
+								order = 5,
+								type = 'select',
+								name = 'Default',
+								values = watchFrameValues,
+							},
+							resting = {
+								order = 10,
+								type = 'select',
+								name = 'Resting',
+								values = watchFrameValues,
+							},
+							arena = {
+								order = 15,
+								type = 'select',
+								name = 'Arena',
+								values = watchFrameValues,
+							},
+							pvp = {
+								order = 20,
+								type = 'select',
+								name = 'Pvp',
+								values = watchFrameValues,
+							},
+							party = {
+								order = 25,
+								type = 'select',
+								name = 'Party',
+								values = watchFrameValues,
+							},
+							raid = {
+								order = 30,
+								type = 'select',
+								name = 'Raid',
+								values = watchFrameValues,
+							},
+							combat = {
+								order = 35,
+								type = 'select',
+								name = 'Combat',
+								values = watchFrameValues,
+							},
+						},
 					},
 				},
 			},

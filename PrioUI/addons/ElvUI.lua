@@ -3,7 +3,7 @@ local PrioUI = E:GetModule('PrioUI');
 
 function PrioUI:SetupElvUI()
 
-	local classSpec = E.myclass..GetSpecialization() or 0
+	local classSpec = E.myclass..(GetSpecialization() or 1)
 
 	PrioUI.Classbar = {
 		["WARRIOR"] = 1,

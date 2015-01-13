@@ -81,7 +81,7 @@ function PrioUI:SetupChat()
 	ChatFrame_RemoveAllChannels(ChatFrame1)
 	ChangeChatColor("CHANNEL5", 0/255, 165/255, 111/256)
 
-	FCF_OpenNewWindow(Chat_GetChannelShortcutName(2))
+	FCF_OpenNewWindow("Trade")
 	ChatFrame_RemoveAllMessageGroups(ChatFrame3)
 	ChatFrame_RemoveAllChannels(ChatFrame3)
 
