@@ -4,7 +4,7 @@
 ## Notes: Core for PrioUI.
 ## Author: EU - Prio#2790
 ## RequiredDep: ElvUI
-## OptionalDeps: BigWigs, Skada, Omen3, ExtraCD, xCT+
+## OptionalDeps: BigWigs, Skada, ExtraCD, xCT+, Afflicted, TimeToDie, SavedInstances, Gladius
 
 PrioUI.lua
 media\load_media.xml
