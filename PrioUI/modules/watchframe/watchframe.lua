@@ -4,7 +4,9 @@ local WFAT = E:NewModule('WatchFrameAutoToggle', 'AceEvent-3.0');
 local watchFrame = _G["ObjectiveTrackerFrame"]
 
 local statedriver = {
-	['NONE'] = function() end,
+	['NONE'] = function() 
+		watchFrame:Show()
+	end,
 	['COLLAPSED'] = function()
 		ObjectiveTracker_Collapse()
 		watchFrame:Show()
