@@ -21,6 +21,7 @@ P['prioui'] = {
 		['raid'] = 'HIDDEN',
 		['default'] = 'COLLAPSED',
 		['combat'] = 'NONE',
+		['scenario'] = 'EXPANDED',
 	},
 	['misc'] = {
 		['skadaworkaround'] = true,
@@ -225,34 +226,40 @@ function PrioUI:GetOptions()
 								name = 'Resting',
 								values = watchFrameValues,
 							},
-							arena = {
+							combat = {
 								order = 15,
+								type = 'select',
+								name = 'Combat',
+								values = watchFrameValues,
+							},
+							arena = {
+								order = 20,
 								type = 'select',
 								name = 'Arena',
 								values = watchFrameValues,
 							},
 							pvp = {
-								order = 20,
+								order = 25,
 								type = 'select',
 								name = 'Pvp',
 								values = watchFrameValues,
 							},
 							party = {
-								order = 25,
+								order = 30,
 								type = 'select',
 								name = 'Party',
 								values = watchFrameValues,
 							},
 							raid = {
-								order = 30,
+								order = 35,
 								type = 'select',
 								name = 'Raid',
 								values = watchFrameValues,
 							},
-							combat = {
-								order = 35,
+							scenario = {
+								order = 40,
 								type = 'select',
-								name = 'Combat',
+								name = 'Scenario',
 								values = watchFrameValues,
 							},
 						},

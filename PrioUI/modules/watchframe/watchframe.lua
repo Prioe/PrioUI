@@ -21,22 +21,25 @@ local statedriver = {
 function WFAT:ChangeState(event)
 	if not E.db.prioui.watchframe.enable then return; end
 
-	if UnitAffectingCombat("player") then
-		statedriver[E.db.prioui.watchframe.combat]()
-	elseif IsResting() then
+	if IsResting() then
 		statedriver[E.db.prioui.watchframe.resting]()
 	else
 		local instance, instanceType = IsInInstance()
 		if instanceType == 'pvp' then
-			statedriver[E.db.prioui.watchframe.pvp]()
+			statedriver[E.db.prioui.watchframe.pvp](); return 
 		elseif instanceType == 'arena' then
-			statedriver[E.db.prioui.watchframe.arena]()
+			statedriver[E.db.prioui.watchframe.arena](); return
 		elseif instanceType == 'party' then
-			statedriver[E.db.prioui.watchframe.party]()
+			statedriver[E.db.prioui.watchframe.party](); return
 		elseif instanceType == 'raid' then
-			statedriver[E.db.prioui.watchframe.raid]()
+			statedriver[E.db.prioui.watchframe.raid](); return
+		elseif instanceType == 'scenario' then
+			statedriver[E.db.prioui.watchframe.scenario](); return
 		else
-			statedriver[E.db.prioui.watchframe.default]()
+			statedriver[E.db.prioui.watchframe.default](); return
+		end
+		if UnitAffectingCombat("player") then
+			statedriver[E.db.prioui.watchframe.combat]()
 		end
 	end
 
