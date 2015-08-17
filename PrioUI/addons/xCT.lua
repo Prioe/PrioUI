@@ -84,6 +84,6 @@ function PrioUI:SetupxCT(profile)
 		end
 
 		--x:UpdateFrames()
-		x.cvar_udpate()
+		x.cvar_update( true )
 		
 end

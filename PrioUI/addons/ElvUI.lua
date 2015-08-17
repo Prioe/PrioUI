@@ -174,7 +174,7 @@ function PrioUI:SetupElvUI()
 	E.db.movers.UIBFrameMover = "TOPRIGHTElvUIParentTOPRIGHT-4-200"
 	E.db.movers.VehicleSeatMover = "TOPLEFTElvUIParentTOPLEFT16-62"
 	E.db.movers.WatchFrameMover = "TOPRIGHTElvUIParentTOPRIGHT-71-292"
-
+	E.db.movers.ElvUF_BodyGuardMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT450385"
 			
 	E.db.bags.currencyFormat = "ICON"
 	E.db.bags.yOffset = 182
@@ -384,23 +384,16 @@ function PrioUI:SetupElvUI()
 	E.db.sle.backgrounds.right.height = 161
 	E.db.sle.backgrounds.right.width = 150
 	E.db.sle.backgrounds.right.template = "Transparent"
-	
-	-- E.db.sle.uibuttons.enable = true
-	-- E.db.sle.uibuttons.position = "uib_hor"
 
-	E.db.sle.uibuttons.afunc.enable = true
-	E.db.sle.uibuttons.rfunc.enable = false
-	E.db.sle.uibuttons.rfunc.called = "Custom"
-	E.db.sle.uibuttons.cfunc.enable = true
-	E.db.sle.uibuttons.cfunc.called = "Elv"
-	E.db.sle.uibuttons.enable = true
-	E.db.sle.uibuttons.position = "uib_hor"
-	E.db.sle.uibuttons.anchor = "BOTTOMRIGHT"
-	E.db.sle.uibuttons.sfunc.enable = true
-	E.db.sle.uibuttons.sfunc.called = "DND"
-	E.db.sle.uibuttons.point = "TOPRIGHT"
-	E.db.sle.uibuttons.yoffset = -4
-	
+
+					E.db.sleuibuttons.point = "TOPRIGHT"
+					E.db.sleuibuttons.anchor = "TOPLEFT"
+					E.db.sleuibuttons.enable = true
+					E.db.sleuibuttons.orientation = "horizontal"
+					E.db.sleuibuttons.xoffset = -3
+					E.db.sleuibuttons.spacing = 1
+
+
 	E.db.sle.datatext.top.enabled = true
 	E.db.sle.datatext.top.transparent = true
 	E.db.sle.datatext.top.width = 388
@@ -459,7 +452,7 @@ function PrioUI:SetupElvUI()
 	-- Private
 	E.private.general.dmgfont = "Designer Block"
 	E.private.general.chatBubbles = "nobackdrop"
-	E.private.sle.characterframeoptions.enable = true
+	-- E.private.sle.characterframeoptions.enable = true
 	E.private.sle.minimap.mapicons.enable = true
 	E.private.sle.minimap.mapicons.barenable = true
 	E.private.sle.vehicle.enable = true
