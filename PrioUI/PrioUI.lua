@@ -14,5 +14,5 @@ function PrioUI:Initialize()
 	if  E.private.install_complete == "prioincomplete" then PrioUI:Install(); end
 	EP:RegisterPlugin(addon,self.GetOptions)
 end
-
+-- test
 E:RegisterModule(PrioUI:GetName());
