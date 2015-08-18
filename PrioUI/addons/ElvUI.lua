@@ -171,7 +171,8 @@ function PrioUI:SetupElvUI()
 	E.db.movers.TempEnchantMover = "TOPRIGHTElvUIParentTOPRIGHT-107-197"
 	E.db.movers.Top_Center_Mover = "TOPElvUIParentTOP00"
 	E.db.movers.TotemBarMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT493107"
-	E.db.movers.UIBFrameMover = "TOPRIGHTElvUIParentTOPRIGHT-4-200"
+	-- E.db.movers.UIBFrameMover = "TOPRIGHTElvUIParentTOPRIGHT-4-200"
+	E.db.movers.SLE_UIButtonsMover = "TOPRIGHTElvUIParentTOPRIGHT-2-201"
 	E.db.movers.VehicleSeatMover = "TOPLEFTElvUIParentTOPLEFT16-62"
 	E.db.movers.WatchFrameMover = "TOPRIGHTElvUIParentTOPRIGHT-71-292"
 	E.db.movers.ElvUF_BodyGuardMover = "BOTTOMLEFTElvUIParentBOTTOMLEFT450385"
@@ -385,14 +386,12 @@ function PrioUI:SetupElvUI()
 	E.db.sle.backgrounds.right.width = 150
 	E.db.sle.backgrounds.right.template = "Transparent"
 
-
-					E.db.sleuibuttons.point = "TOPRIGHT"
-					E.db.sleuibuttons.anchor = "TOPLEFT"
-					E.db.sleuibuttons.enable = true
-					E.db.sleuibuttons.orientation = "horizontal"
-					E.db.sleuibuttons.xoffset = -3
-					E.db.sleuibuttons.spacing = 1
-
+	E.db.sle.uibuttons.point = "TOPRIGHT"
+	E.db.sle.uibuttons.anchor = "TOPLEFT"
+	E.db.sle.uibuttons.enable = true
+	E.db.sle.uibuttons.orientation = "horizontal"
+	E.db.sle.uibuttons.xoffset = -3
+	E.db.sle.uibuttons.spacing = 1
 
 	E.db.sle.datatext.top.enabled = true
 	E.db.sle.datatext.top.transparent = true
@@ -448,6 +447,10 @@ function PrioUI:SetupElvUI()
 		E.db.unitframe.units.player.classbar.height = 19
 		E.db.unitframe.units.player.classbar.fill = "spaced"	
 	end
+
+	--[[
+	  Chat filter dps meter spam
+	]]
 	
 	-- Private
 	E.private.general.dmgfont = "Designer Block"
